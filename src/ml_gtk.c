@@ -73,10 +73,11 @@ CAMLprim value ml_gtkwindow_init(value unit)
         gtk_message_dialog_get_type() +
         gtk_color_selection_dialog_get_type() +
         gtk_font_selection_dialog_get_type() 
+/*
 #ifndef _WIN32
         + gtk_plug_get_type()
         + gtk_socket_get_type()
-#endif
+#endif*/
 ;
     return Val_GType(t);
 }
@@ -889,12 +890,13 @@ Unsupported_26(gtk_about_dialog_new)
 
 /* gtkplug.h */
 #ifdef _WIN32
-Unsupported(gtk_plug_new)
+/* Unsupported(gtk_plug_new) */
 #else
-ML_1 (gtk_plug_new, GdkNativeWindow_val, Val_GtkWidget_window)
+/* ML_1 (gtk_plug_new, GdkNativeWindow_val, Val_GtkWidget_window) */
 #endif
 
 /* gtksocket.h */
+/*
 #ifdef _WIN32
 Unsupported(gtk_socket_steal)
 #else
@@ -903,6 +905,7 @@ ML_2 (gtk_socket_add_id, GtkSocket_val, GdkNativeWindow_val, Unit)
 ML_1 (gtk_socket_get_id, GtkSocket_val, Val_GdkNativeWindow)
 ML_1 (gtk_socket_get_plug_window, GtkSocket_val, Val_GdkWindow)
 #endif
+*/
 
 /* gtkmain.h */
 
