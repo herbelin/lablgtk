@@ -247,6 +247,7 @@ module Color = struct
   external color_alloc : colormap -> color -> bool = "ml_gdk_color_alloc"
   external color_create : red:int -> green:int -> blue:int -> color
       = "ml_GdkColor"
+  external color_to_string : color -> string = "ml_gdk_color_to_string"
 
   external get_system_colormap : unit -> colormap
       = "ml_gdk_colormap_get_system"
