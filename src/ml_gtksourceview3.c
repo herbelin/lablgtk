@@ -45,9 +45,13 @@
 #include <string.h>
 #include "sourceView3_tags.c"
 
+/* Not in gtksourceview 3.0
 Make_OptFlags_val(Source_search_flag_val)
+*/
 
+/* Already in ml_gobject.c
 Make_Val_final_pointer_ext(GObject, _sink, g_object_ref_sink, ml_g_object_unref_later, 20)
+*/
 
 CAMLprim value ml_gtk_source_completion_init(value unit)
 {       /* Since these are declared const, must force gcc to call them! */
@@ -373,7 +377,7 @@ GType custom_completion_provider_get_type (void)
                                                &custom_completion_provider_info, (GTypeFlags)0);
 
     /* Here we register our GtkTreeModel interface with the type system */
-    g_type_add_interface_static (custom_completion_provider_type, GTK_TYPE_SOURCE_COMPLETION_PROVIDER, &source_completion_provider_info);
+    g_type_add_interface_static (custom_completion_provider_type, GTK_SOURCE_TYPE_COMPLETION_PROVIDER, &source_completion_provider_info);
   }
 
   return custom_completion_provider_type;
@@ -418,14 +422,18 @@ ML_4 (gtk_source_completion_item_new_from_stock, String_val, String_val,
 
 ML_3 (gtk_source_completion_info_move_to_iter,
       GtkSourceCompletionInfo_val, GtkTextView_val, GtkTextIter_val, Unit)
+/* Removed in gtksourceview3
 ML_5 (gtk_source_completion_info_set_sizing,
       GtkSourceCompletionInfo_val, Int_val, Int_val, Bool_val, Bool_val, Unit)
+*/
 ML_2 (gtk_source_completion_info_set_widget,
       GtkSourceCompletionInfo_val, GtkWidget_val, Unit)
 ML_1 (gtk_source_completion_info_get_widget,
       GtkSourceCompletionInfo_val, Val_GtkWidget)
+/* Removed in gtksourceview3
 ML_1 (gtk_source_completion_info_process_resize,
       GtkSourceCompletionInfo_val, Unit)
+*/
 
 // Completion context
 
@@ -683,7 +691,7 @@ GType custom_undo_manager_get_type (void)
                                                &custom_undo_manager_info, (GTypeFlags)0);
 
     /* Here we register our GtkTreeModel interface with the type system */
-    g_type_add_interface_static (custom_undo_manager_type, GTK_TYPE_SOURCE_UNDO_MANAGER, &source_undo_manager_info);
+    g_type_add_interface_static (custom_undo_manager_type, GTK_SOURCE_TYPE_UNDO_MANAGER, &source_undo_manager_info);
   }
 
   return custom_undo_manager_type;
@@ -737,6 +745,7 @@ ML_2 (gtk_source_buffer_set_highlight_matching_brackets, GtkSourceBuffer_val, Bo
 ML_0 (gtk_source_view_new, Val_GtkWidget_sink)
 ML_1 (gtk_source_view_new_with_buffer, GtkSourceBuffer_val, Val_GtkWidget_sink)
 
+/* The following are apparently removed in gtksourceview3, replaced by gtk_source_view_get_mark_category (TODO?)
 ML_2 (gtk_source_view_get_mark_category_priority,
       GtkSourceView_val, String_val, Val_int)
 ML_3 (gtk_source_view_set_mark_category_priority,
@@ -765,6 +774,7 @@ CAMLprim value ml_gtk_source_view_get_mark_category_background
 
      CAMLreturn(result);
 }
+*/
 
 ML_1 (gtk_source_view_get_completion, GtkSourceView_val, Val_GtkSourceCompletion)
 
@@ -788,7 +798,7 @@ get_widget_name (GtkWidget *w)
         name = gtk_widget_get_name (w);
         g_return_val_if_fail (name != NULL, NULL);
 
-        if (strcmp (name, g_type_name (GTK_WIDGET_TYPE (w))) == 0)
+        if (strcmp (name, g_type_name (G_OBJECT_TYPE (w))) == 0)
         {
                 static guint d = 0;
                 gchar *n;
@@ -855,6 +865,7 @@ gtk_modify_cursor_color (GtkWidget *textview,
 
 ML_2(gtk_modify_cursor_color,GtkWidget_val,GdkColor_val,Unit);
 
+/* Not anymore in gtksourceview3; ml_gtk_source_iter_*_search told to be now in gtk+
 #define Make_search(dir) \
 CAMLprim value ml_gtk_source_iter_##dir##_search (value ti,\
                                                 value str,\
@@ -883,7 +894,9 @@ CAMLprim value ml_gtk_source_iter_##dir##_search (value ti,\
       Store_field(coup,1,Val_GtkTextIter(ti2));\
       Store_field(res,0,coup);};\
   CAMLreturn(res);}
+
 Make_search(forward);
 Make_search(backward);
 ML_bc6(ml_gtk_source_iter_forward_search);
 ML_bc6(ml_gtk_source_iter_backward_search);
+*/
