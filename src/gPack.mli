@@ -277,14 +277,14 @@ class notebook : Gtk.notebook obj ->
     method set_tab_hborder : int -> unit
     method set_tab_reorderable : widget -> bool -> unit
     method set_tab_vborder : int -> unit
-    method set_tab_pos : Tags.position -> unit
+    method set_tab_pos : Tags.position_type -> unit
     method enable_popup : bool
     method homogeneous_tabs : bool
     method scrollable : bool
     method show_border : bool
     method show_tabs : bool
     method tab_hborder : int
-    method tab_pos : GtkEnums.position_type
+    method tab_pos : Tags.position_type
     method tab_vborder : int
   end
 
@@ -296,7 +296,7 @@ val notebook :
   ?show_border:bool ->
   ?show_tabs:bool ->
   ?tab_border:int ->
-  ?tab_pos:Tags.position ->
+  ?tab_pos:Tags.position_type ->
   ?border_width:int ->
   ?width:int ->
   ?height:int ->
