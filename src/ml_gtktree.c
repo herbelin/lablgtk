@@ -611,7 +611,7 @@ CAMLprim value
 ml_gtk_tree_view_set_row_separator_func (value cb, value fun_o)
 {
   gpointer data;
-  GtkDestroyNotify dnotify;
+  GDestroyNotify dnotify;
   GtkTreeViewRowSeparatorFunc func;
   if (Is_long (fun_o))
     {
