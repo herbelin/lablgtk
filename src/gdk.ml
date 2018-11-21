@@ -299,29 +299,6 @@ module Visual = struct
   external depth : visual -> int = "ml_gdk_visual_get_depth"
 end
 
-module Image = struct
-  type image_type =
-    [ `NORMAL|`SHARED|`FASTEST ]
-
-  let cast w : image = Gobject.try_cast w "GdkImage"
-  let destroy = Gobject.unsafe_unref
-
-  external create : kind: image_type -> visual: visual -> 
-    width: int -> height: int -> image
-      = "ml_gdk_image_new"
-  external get :
-      [>`drawable] obj -> x: int -> y: int -> width: int -> height: int -> image
-      = "ml_gdk_drawable_get_image"
-  external put_pixel : image -> x: int -> y: int -> pixel: int -> unit
-    = "ml_gdk_image_put_pixel"
-  external get_pixel : image -> x: int -> y: int -> int
-    = "ml_gdk_image_get_pixel"
-  external width : image -> int = "ml_gdk_image_width"
-  external height : image -> int = "ml_gdk_image_height"
-  external depth : image -> int = "ml_gdk_image_depth"
-  external get_visual : image -> visual = "ml_gdk_image_visual"
-end
-
 module Color = struct
   external color_white : colormap -> color = "ml_gdk_color_white"
   external color_black : colormap -> color = "ml_gdk_color_black"
