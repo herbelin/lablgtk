@@ -63,21 +63,16 @@ class button_box obj = object
   method connect = new container_signals_impl obj
   method set_layout  = set BBox.P.layout_style  obj
   method layout  = get BBox.P.layout_style  obj
-  method set_child_size = BBox.set_child_size obj
-  method set_child_ipadding = BBox.set_child_ipadding obj
-  method get_child_secondary (w : widget) = BBox.get_child_secondary obj w#as_widget
-  method set_child_secondary (w : widget) = BBox.set_child_secondary obj w#as_widget
+  method get_child_secondary (w : widget) =
+    BBox.get_child_secondary obj w#as_widget
+  method set_child_secondary (w : widget) =
+    BBox.set_child_secondary obj w#as_widget
 end
 
-let button_box dir ?spacing ?child_width ?child_height ?child_ipadx
-    ?child_ipady ?layout =
+let button_box dir ?layout =
   pack_container [] ~create:(fun p ->
-    let p =
-      Property.may_cons Box.P.spacing spacing (
-      Property.may_cons BBox.P.layout_style layout p) in
+    let p = Property.may_cons BBox.P.layout_style layout p in
     let w = BBox.create dir p in
-    BBox.set w ?child_width ?child_height ?child_ipadx
-      ?child_ipady ?layout;
     new button_box w)
 
 class table obj = object

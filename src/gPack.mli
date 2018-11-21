@@ -93,8 +93,6 @@ class button_box : ([> Gtk.button_box] as 'a) obj ->
   object
     inherit box
     val obj : 'a obj
-    method set_child_ipadding : ?x:int -> ?y:int -> unit -> unit (** @deprecated . *)
-    method set_child_size : ?width:int -> ?height:int -> unit -> unit (** @deprecated . *)
     method set_layout : Gtk.Tags.button_box_style -> unit
     method layout : Gtk.Tags.button_box_style
     method get_child_secondary : widget -> bool (** @since GTK 2.4 *)
@@ -104,12 +102,7 @@ class button_box : ([> Gtk.button_box] as 'a) obj ->
 (** @gtkdoc gtk GtkButtonBox *)
 val button_box :
   Tags.orientation ->
-  ?spacing:int ->
-  ?child_width:int ->
-  ?child_height:int ->
-  ?child_ipadx:int ->
-  ?child_ipady:int ->
-  ?layout:GtkPack.BBox.bbox_style ->
+  ?layout:Gtk.Tags.button_box_style ->
   ?border_width:int ->
   ?width:int ->
   ?height:int ->
