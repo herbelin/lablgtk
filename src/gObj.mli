@@ -134,18 +134,24 @@ class style : Gtk.style ->
     method as_style : Gtk.style
     method base : Gtk.Tags.state_type -> Gdk.color
     method bg : Gtk.Tags.state_type -> Gdk.color
+(*
     method colormap : Gdk.colormap
+*)
     method copy : 'a
     method dark : Gtk.Tags.state_type -> Gdk.color
     method fg : Gtk.Tags.state_type -> Gdk.color
+(*
     method font : Gdk.font
+*)
     method light : Gtk.Tags.state_type -> Gdk.color
     method mid : Gtk.Tags.state_type -> Gdk.color
     method set_bg : (Gtk.Tags.state_type * GDraw.color) list -> unit
     method set_base : (Gtk.Tags.state_type * GDraw.color) list -> unit
     method set_dark : (Gtk.Tags.state_type * GDraw.color) list -> unit
     method set_fg : (Gtk.Tags.state_type * GDraw.color) list -> unit
+(*
     method set_font : Gdk.font -> unit
+*)
     method set_light : (Gtk.Tags.state_type * GDraw.color) list -> unit
     method set_mid : (Gtk.Tags.state_type * GDraw.color) list -> unit
     method set_text : (Gtk.Tags.state_type * GDraw.color) list -> unit

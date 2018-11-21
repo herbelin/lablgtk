@@ -150,6 +150,7 @@ CAMLprim value ml_gtk_accel_map_foreach(value func)
 
 /* gtkstyle.h */
 
+/* deprecated since 3.0 */
 #define Val_GtkStyle_new(val) (Val_GObject_new(&val->parent_instance))
 ML_0 (gtk_style_new, Val_GtkStyle_new)
 ML_1 (gtk_style_copy, GtkStyle_val, Val_GtkStyle_new)
@@ -157,12 +158,14 @@ ML_2 (gtk_style_attach, GtkStyle_val, GdkWindow_val, Val_GtkStyle)
 ML_1 (gtk_style_detach, GtkStyle_val, Unit)
 ML_3 (gtk_style_set_background, GtkStyle_val, GdkWindow_val, State_type_val,
       Unit)
+/* removed in 3.0
 ML_6 (gtk_draw_hline, GtkStyle_val, GdkWindow_val, State_type_val,
       Int_val, Int_val, Int_val, Unit)
 ML_bc6 (ml_gtk_draw_hline)
 ML_6 (gtk_draw_vline, GtkStyle_val, GdkWindow_val, State_type_val,
       Int_val, Int_val, Int_val, Unit)
 ML_bc6 (ml_gtk_draw_vline)
+*/
 Make_Array_Extractor (gtk_style_get, GtkStyle_val, State_type_val,
                       bg, Val_copy)
 Make_Array_Setter (gtk_style_set, GtkStyle_val, State_type_val,
@@ -191,11 +194,11 @@ Make_Array_Extractor (gtk_style_get, GtkStyle_val, State_type_val,
                       text, Val_copy)
 Make_Array_Setter (gtk_style_set, GtkStyle_val, State_type_val,
                    *GdkColor_val, text)
+/* removed in 3.0
 Make_Extractor (gtk_style_get, GtkStyle_val, colormap, Val_GdkColormap)
 Make_Extractor (gtk_style_get, GtkStyle_val, depth, Val_int)
 ML_1 (gtk_style_get_font, GtkStyle_val, Val_GdkFont)
 ML_2 (gtk_style_set_font, GtkStyle_val, GdkFont_val, Unit)
-/*
 CAMLprim value ml_gtk_style_set_font (value st, value font)
 {
     GtkStyle *style = GtkStyle_val(st);
