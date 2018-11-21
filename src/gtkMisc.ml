@@ -32,8 +32,6 @@ open GtkBase
 external _gtkmisc_init : unit -> unit = "ml_gtkmisc_init"
 let () = _gtkmisc_init ()
 
-module GammaCurve = GammaCurve
-
 module ColorSelection = ColorSelection
 
 module Statusbar = Statusbar
@@ -43,8 +41,6 @@ module StatusIcon = GtkStatusIcon
 module Calendar = Calendar
 
 module DrawingArea = DrawingArea
-
-module Curve = Curve
 
 module Misc = struct
   include Misc

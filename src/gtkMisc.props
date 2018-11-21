@@ -168,3 +168,4 @@ class DrawingArea : Widget {
   method size : "width:int -> height:int -> unit"
 }
 
+class Separator hv : Widget {}
