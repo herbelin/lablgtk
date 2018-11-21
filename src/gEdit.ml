@@ -158,24 +158,6 @@ let spin_button ?adjustment =
     ?adjustment:(may_map ~f:GData.as_adjustment adjustment) ~cont:(
   pack_sized ~create:(fun pl -> new spin_button (SpinButton.create pl)))
 
-class combo obj = object
-  inherit [Gtk.combo] widget_impl obj
-  inherit combo_props
-  method entry = new entry (Combo.entry obj)
-  method list = new GList.liste (Combo.list obj)
-  method set_popdown_strings = Combo.set_popdown_strings obj
-  method disable_activate () = Combo.disable_activate obj
-  method set_item_string (item : GList.list_item) =
-    Combo.set_item_string obj item#as_item
-end
-
-let combo ?popdown_strings =
-  Combo.make_params [] ~cont:(
-  GContainer.pack_container ~create:(fun pl ->
-    let w = Combo.create pl in
-    may (Combo.set_popdown_strings w) popdown_strings;
-    new combo w))
-
 class combo_box_signals obj = object
   inherit GContainer.container_signals_impl (obj :> Gtk.combo_box Gtk.obj)
   inherit OgtkEditProps.combo_box_sigs

@@ -290,39 +290,6 @@ val spin_button :
   ?width:int -> ?height:int ->
   ?packing:(widget -> unit) -> ?show:bool -> unit -> spin_button
 
-(** {3 GtkCombo} *)
-
-(** A text entry field with a dropdown list
-   @gtkdoc gtk GtkCombo *)
-class combo : Gtk.combo obj ->
-  object
-    inherit GObj.widget
-    val obj : Gtk.combo obj
-    method disable_activate : unit -> unit
-    method entry : entry
-    method list : GList.liste
-    method set_item_string : GList.list_item -> string -> unit
-    method set_popdown_strings : string list -> unit
-    method set_allow_empty : bool -> unit
-    method set_case_sensitive : bool -> unit
-    method set_enable_arrow_keys : bool -> unit
-    method set_value_in_list : bool -> unit
-    method allow_empty : bool
-    method case_sensitive : bool
-    method enable_arrow_keys : bool
-    method value_in_list : bool
-  end
-
-(** @gtkdoc gtk GtkCombo *)
-val combo :
-  ?popdown_strings:string list ->
-  ?allow_empty:bool ->
-  ?case_sensitive:bool ->
-  ?enable_arrow_keys:bool ->
-  ?value_in_list:bool ->
-  ?border_width:int -> ?width:int -> ?height:int ->
-  ?packing:(widget -> unit) -> ?show:bool -> unit -> combo
-
 (** {3 GtkComboBox} *)
 
 (** @since GTK 2.4 

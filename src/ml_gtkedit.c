@@ -45,7 +45,6 @@ CAMLprim value ml_gtkedit_init(value unit)
     /* Since these are declared const, must force gcc to call them! */
     GType t =
         gtk_spin_button_get_type() +
-        gtk_combo_get_type() +
         gtk_combo_box_get_type() +
         gtk_combo_box_entry_get_type() +
         gtk_combo_box_text_get_type() +
@@ -163,24 +162,6 @@ CAMLprim value ml_gtk_text_insert (value text, value font, value fore,
 ML_2 (gtk_text_forward_delete, GtkText_val, Int_val, Val_int)
 ML_2 (gtk_text_backward_delete, GtkText_val, Int_val, Val_int)
 */
-
-/* gtkcombo.h */
-
-#define GtkCombo_val(val) check_cast(GTK_COMBO,val)
-/*
-ML_0 (gtk_combo_new, Val_GtkWidget_sink)
-ML_3 (gtk_combo_set_value_in_list, GtkCombo_val,
-      Option_val(arg2, Bool_val, GtkCombo_val(arg1)->value_in_list) Ignore,
-      Option_val(arg3, Bool_val, GtkCombo_val(arg1)->ok_if_empty) Ignore,
-      Unit)
-ML_2 (gtk_combo_set_use_arrows, GtkCombo_val, Bool_val, Unit)
-ML_2 (gtk_combo_set_use_arrows_always, GtkCombo_val, Bool_val, Unit)
-ML_2 (gtk_combo_set_case_sensitive, GtkCombo_val, Bool_val, Unit)
-*/
-ML_3 (gtk_combo_set_item_string, GtkCombo_val, GtkItem_val, String_val, Unit)
-ML_1 (gtk_combo_disable_activate, GtkCombo_val, Unit)
-Make_Extractor (gtk_combo, GtkCombo_val, entry, Val_GtkWidget)
-Make_Extractor (gtk_combo, GtkCombo_val, list, Val_GtkWidget)
 
 /* gtkcombobox.h */
 #define GtkComboBox_val(val) check_cast(GTK_COMBO_BOX,val)
