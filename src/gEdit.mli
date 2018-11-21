@@ -104,6 +104,7 @@ class entry_signals : [> Gtk.entry] obj ->
   object
     inherit editable_signals
     method activate : callback:(unit -> unit) -> GtkSignal.id
+    method backspace : callback:(unit -> unit) -> GtkSignal.id
     method copy_clipboard : callback:(unit -> unit) -> GtkSignal.id
     method cut_clipboard : callback:(unit -> unit) -> GtkSignal.id
     method delete_from_cursor :
@@ -152,8 +153,6 @@ class entry : ([> Gtk.entry] as 'a) obj ->
     method as_entry : Gtk.entry Gtk.obj
     method connect : entry_signals
     method event : event_ops
-    method append_text : string -> unit
-    method prepend_text : string -> unit
     method scroll_offset : int
     method text : string
     method text_length : int

@@ -109,9 +109,6 @@ class entry obj = object
   inherit entry_props
   method as_entry = (obj :> Gtk.entry obj)
   method event = new GObj.event_ops obj
-  method append_text = Entry.append_text obj
-  method prepend_text = Entry.prepend_text obj
-  method text_length = Entry.text_length obj
   method get_completion =
     may_map (new entry_completion) (Entry.get_completion obj)
   method set_completion (c : entry_completion) = 
