@@ -102,6 +102,7 @@ module Widget = struct
       = "ml_gtk_widget_get_pointer"
   external is_ancestor : [>`widget] obj -> [>`widget] obj -> bool
       = "ml_gtk_widget_is_ancestor"
+  (* Deprecated since 3.0 *)
   external ensure_style : [>`widget] obj -> unit
       = "ml_gtk_widget_ensure_style"
   external modify_fg : [>`widget] obj -> state_type -> Gdk.color -> unit
@@ -114,6 +115,7 @@ module Widget = struct
       = "ml_gtk_widget_modify_base"
   external modify_font : [>`widget] obj -> Pango.font_description -> unit
       = "ml_gtk_widget_modify_font"
+  (* End deprecated since 3.0 *)
   external get_pango_context : [>`widget] obj -> Pango.context
       = "ml_gtk_widget_get_pango_context"
   external create_pango_context : [>`widget] obj -> Pango.context

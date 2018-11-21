@@ -292,6 +292,7 @@ and misc_ops obj = object (self)
         (fun h -> h * GPango.to_pixels (metrics#ascent+metrics#descent)) in
     self#set_size_request ?width ?height ()
   method set_style (style : style) = set P.style obj style#as_style
+  (* Deprecated since 3.0 *)
   method modify_fg = iter_setcol Widget.modify_fg obj
   method modify_bg = iter_setcol Widget.modify_bg obj
   method modify_text = iter_setcol Widget.modify_text obj
@@ -299,6 +300,7 @@ and misc_ops obj = object (self)
   method modify_font = Widget.modify_font obj
   method modify_font_by_name s =
     Widget.modify_font obj (Pango.Font.from_string s)
+  (* End deprecated since 3.0 *)
   method create_pango_context =
     new GPango.context_rw (Widget.create_pango_context obj)
   (* get functions *)
