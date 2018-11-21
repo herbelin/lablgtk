@@ -173,8 +173,6 @@ class tool_item_skel obj = object
   method get_homogeneous = ToolItem.get_homogeneous obj
   method set_expand = ToolItem.set_expand obj
   method get_expand = ToolItem.get_expand obj
-  method set_tooltip (t : GData.tooltips) =
-    ToolItem.set_tooltip obj t#as_tooltips
   method set_use_drag_window = ToolItem.set_use_drag_window obj
   method get_use_drag_window = ToolItem.get_use_drag_window obj
 end
@@ -277,8 +275,6 @@ class menu_tool_button obj = object
   inherit tool_button obj
   method menu = get MenuToolButton.P.menu obj
   method set_menu = set MenuToolButton.P.menu obj
-  method set_arrow_tooltip (t : GData.tooltips) =
-    MenuToolButton.set_arrow_tooltip obj t#as_tooltips
 end
 
 let menu_tool_button ?menu =

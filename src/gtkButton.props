@@ -68,7 +68,6 @@ class ToolItem wrap : Bin {
   method get_homogeneous : "bool"
   method set_expand : "bool -> unit"
   method get_expand : "bool"
-  method set_tooltip : "[>`tooltips] obj -> string -> string -> unit"
   method set_use_drag_window : "bool -> unit"
   method get_use_drag_window : "bool"
 
@@ -119,7 +118,8 @@ classes { GtkMenu "menu obj" }
 class MenuToolButton : ToolButton {
   "menu"                 GtkMenu               : Read / Write
 (*  signal show-menu *)
-  method set_arrow_tooltip : "[>`tooltips] obj -> string -> string -> unit"
+  method set_arrow_tooltip_text   : "string -> unit"
+  method set_arrow_tooltip_markup : "string -> unit"
 }
 
 class Toolbar set wrap wrapsig : Container {

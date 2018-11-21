@@ -342,7 +342,6 @@ class tool_item_skel :
     method get_homogeneous : bool
     method set_expand : bool -> unit
     method get_expand : bool
-    method set_tooltip : GData.tooltips -> string -> string -> unit
     method set_use_drag_window : bool -> unit
     method get_use_drag_window : bool
 end
@@ -502,7 +501,6 @@ class menu_tool_button :
     val obj : 'a obj
     method menu : Gtk.menu Gtk.obj
     method set_menu : Gtk.menu Gtk.obj -> unit
-    method set_arrow_tooltip : GData.tooltips -> string -> string -> unit
   end
 
 (** @gtkdoc gtk GtkMenuToolButton
