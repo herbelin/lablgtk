@@ -83,11 +83,13 @@ ML_1 (gtk_status_icon_get_icon_name, GtkStatusIcon_val, Val_string)
 ML_1 (gtk_status_icon_get_size, GtkStatusIcon_val, Val_int)
 ML_2 (gtk_status_icon_set_screen, GtkStatusIcon_val, GdkScreen_val, Unit)
 ML_1 (gtk_status_icon_get_screen, GtkStatusIcon_val, Val_GdkScreen)
-ML_2 (gtk_status_icon_set_tooltip, GtkStatusIcon_val, String_val, Unit)
+/* not in 3
+ML_2 (gtk_status_icon_set_tooltip, GtkStatusIcon_val, String_val, Unit) */
 ML_2 (gtk_status_icon_set_visible, GtkStatusIcon_val, Bool_val, Unit)
 ML_1 (gtk_status_icon_get_visible, GtkStatusIcon_val, Val_bool)
+/* not in 3
 ML_2 (gtk_status_icon_set_blinking, GtkStatusIcon_val, Bool_val, Unit)
-ML_1 (gtk_status_icon_get_blinking, GtkStatusIcon_val, Val_bool)
+ML_1 (gtk_status_icon_get_blinking, GtkStatusIcon_val, Val_bool) */
 ML_1 (gtk_status_icon_is_embedded, GtkStatusIcon_val, Val_bool)
 /*
 void                gtk_status_icon_position_menu       (GtkMenu *menu,

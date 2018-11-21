@@ -21,7 +21,6 @@ prefix ""
 class GtkStatusIcon set wrap wrapsig : GObject {
   "screen"  GdkScreen : Read / Write
   "visible" gboolean : Read / Write
-  "blinking" gboolean : Read / Write
   method set_from_pixbuf : "GdkPixbuf.pixbuf -> unit"
   method set_from_file : "string -> unit"
   method set_from_stock : "string -> unit"
@@ -32,11 +31,8 @@ class GtkStatusIcon set wrap wrapsig : GObject {
   method get_size : "int"
   method set_screen : "Gdk.screen -> unit"
   method get_screen : "Gdk.screen"
-  method set_tooltip : "string -> unit"
   method set_visible : "bool -> unit"
   method get_visible : "bool"
-  method set_blinking : "bool -> unit"
-  method get_blinking : "bool"
   method is_embedded : "bool"
   signal activate
   signal popup_menu : guint guint

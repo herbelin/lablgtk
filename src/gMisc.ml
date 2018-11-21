@@ -81,7 +81,6 @@ class status_icon obj = object
   method get_stock = StatusIcon.get_stock obj
   method get_icon_name = StatusIcon.get_icon_name obj
   method get_size = StatusIcon.get_size obj
-  method set_tooltip = StatusIcon.set_tooltip obj
   method is_embedded= StatusIcon.is_embedded obj
 end
 

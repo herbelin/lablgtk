@@ -77,7 +77,6 @@ class status_icon_signals : Gtk.status_icon Gobject.obj ->
     method activate : callback:(unit -> unit) -> GtkSignal.id
     method popup_menu : callback:(int -> int -> unit) -> GtkSignal.id
     method size_changed : callback:(int -> unit) -> GtkSignal.id
-    method notify_blinking : callback:(bool -> unit) -> GtkSignal.id
     method notify_screen : callback:(Gdk.screen -> unit) -> GtkSignal.id
     method notify_visible : callback:(bool -> unit) -> GtkSignal.id
   end
@@ -88,7 +87,6 @@ class status_icon : Gtk.gtk_status_icon ->
   object
     val obj : Gtk.status_icon Gobject.obj
     method connect : status_icon_signals
-    method blinking : bool
     method get_icon_name : string
     method get_pixbuf : GdkPixbuf.pixbuf
     method screen : Gdk.screen
@@ -96,26 +94,24 @@ class status_icon : Gtk.gtk_status_icon ->
     method get_stock : string
     method visible : bool
     method is_embedded : bool
-    method set_blinking : bool -> unit
     method set_from_file : string -> unit
     method set_from_icon_name : string -> unit
     method set_from_pixbuf : GdkPixbuf.pixbuf -> unit
     method set_from_stock : string -> unit
     method set_screen : Gdk.screen -> unit
-    method set_tooltip : string -> unit
     method set_visible : bool -> unit
   end
 
 val status_icon :
-  ?screen:Gdk.screen -> ?visible:bool -> ?blinking:bool -> unit -> status_icon
+  ?screen:Gdk.screen -> ?visible:bool -> unit -> status_icon
 val status_icon_from_pixbuf :
-  ?screen:Gdk.screen -> ?visible:bool -> ?blinking:bool -> GdkPixbuf.pixbuf -> status_icon
+  ?screen:Gdk.screen -> ?visible:bool -> GdkPixbuf.pixbuf -> status_icon
 val status_icon_from_file :
-  ?screen:Gdk.screen -> ?visible:bool -> ?blinking:bool -> string -> status_icon
+  ?screen:Gdk.screen -> ?visible:bool -> string -> status_icon
 val status_icon_from_stock :
-  ?screen:Gdk.screen -> ?visible:bool -> ?blinking:bool -> string -> status_icon
+  ?screen:Gdk.screen -> ?visible:bool -> string -> status_icon
 val status_icon_from_icon_name :
-  ?screen:Gdk.screen -> ?visible:bool -> ?blinking:bool -> string -> status_icon
+  ?screen:Gdk.screen -> ?visible:bool -> string -> status_icon
 
 
 (** {3 Calendar} *)
