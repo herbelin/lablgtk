@@ -234,6 +234,7 @@ module DnD = struct
       = "ml_gdk_drag_context_list_targets"
 end
 
+(*
 module Truecolor = struct
   (* Truecolor quick color query *) 
 
@@ -289,6 +290,7 @@ module Truecolor = struct
 	  ((pixel lsr shift_prec.blue_shift) lsl blue_lsr) land mask
     | _ -> raise (Invalid_argument "Gdk.Truecolor.color_parser")
 end
+*)
 
 module X = struct
   (* X related functions *)

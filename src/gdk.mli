@@ -325,6 +325,7 @@ module DnD :
     val drag_context_targets : drag_context -> atom list
   end
 
+(*
 module Truecolor :
   sig
     val color_creator : visual -> (red: int -> green: int -> blue: int -> int)
@@ -338,6 +339,7 @@ module Truecolor :
 
     val color_parser : visual -> int -> int * int * int
   end
+*)
 
 module X :
   (* X related functions *)
