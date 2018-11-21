@@ -153,7 +153,6 @@ class calendar : Gtk.calendar obj ->
     method select_day : int -> unit
     method select_month : month:int -> year:int -> unit
     method unmark_day : int -> unit
-    method day_is_marked : int -> bool
     method set_display_options : Tags.calendar_display_options list -> unit
   end
 
