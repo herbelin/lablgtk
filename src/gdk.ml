@@ -215,9 +215,6 @@ module Window = struct
     | `PIXMAP(pixmap) -> set_back_pixmap w pixmap 0 
        (* anything OK, Maybe... *) *)
 
-  (* for backward compatibility for lablgtk1 programs *)	  
-  let get_visual = Drawable.get_visual
-
   let xid_of_native (w : native_window) : xid =
     if Windowing.platform = `X11 then Obj.magic w else
     failwith "Gdk.Window.xid_of_native only allowed for X11"
