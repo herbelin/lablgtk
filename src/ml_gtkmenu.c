@@ -57,19 +57,23 @@ CAMLprim value ml_gtkmenu_init(value unit)
 #define GtkMenuItem_val(val) check_cast(GTK_MENU_ITEM,val)
 ML_0 (gtk_menu_item_new, Val_GtkWidget_sink)
 ML_0 (gtk_separator_menu_item_new, Val_GtkWidget_sink)
-ML_0 (gtk_tearoff_menu_item_new, Val_GtkWidget_sink)
+/* deprecated
+ML_0 (gtk_tearoff_menu_item_new, Val_GtkWidget_sink) */
 ML_1 (gtk_menu_item_new_with_label, String_val, Val_GtkWidget_sink)
 ML_1 (gtk_menu_item_new_with_mnemonic, String_val, Val_GtkWidget_sink)
-ML_2 (gtk_menu_item_set_submenu, GtkMenuItem_val, GtkWidget_val, Unit)
+ML_2 (gtk_menu_item_set_submenu, GtkMenuItem_val,
+      Option_val(arg2,GtkWidget_val,NULL) Ignore, Unit)
 Make_Val_option(GtkWidget)
 ML_1 (gtk_menu_item_get_submenu, GtkMenuItem_val, Val_option_GtkWidget)
-ML_1 (gtk_menu_item_remove_submenu, GtkMenuItem_val, Unit)
+/* not in 3
+ML_1 (gtk_menu_item_remove_submenu, GtkMenuItem_val, Unit) */
 ML_2 (gtk_menu_item_set_accel_path, GtkMenuItem_val, String_val, Unit)
 ML_1 (gtk_menu_item_activate, GtkMenuItem_val, Unit)
 ML_1 (gtk_menu_item_select, GtkMenuItem_val, Unit)
 ML_1 (gtk_menu_item_deselect, GtkMenuItem_val, Unit)
+/* deprecated
 ML_2 (gtk_menu_item_set_right_justified, GtkMenuItem_val, Bool_val, Unit)
-ML_1 (gtk_menu_item_get_right_justified, GtkMenuItem_val, Val_bool)
+ML_1 (gtk_menu_item_get_right_justified, GtkMenuItem_val, Val_bool) */
 
 CAMLprim value ml_gtk_menu_item_toggle_size_request(value sm,value i)
 {
@@ -104,11 +108,9 @@ ML_1 (gtk_check_menu_item_new_with_mnemonic, String_val, Val_GtkWidget_sink)
 ML_2 (gtk_check_menu_item_set_active, GtkCheckMenuItem_val, Bool_val, Unit)
 ML_2 (gtk_check_menu_item_set_inconsistent, GtkCheckMenuItem_val, Bool_val, Unit)
 ML_1 (gtk_check_menu_item_get_inconsistent, GtkCheckMenuItem_val, Val_bool)
-ML_2 (gtk_check_menu_item_set_show_toggle, GtkCheckMenuItem_val,
-      Bool_val, Unit)
+/*ML_2 (gtk_check_menu_item_set_show_toggle, GtkCheckMenuItem_val,
+      Bool_val, Unit)*/
 ML_1 (gtk_check_menu_item_toggled, GtkCheckMenuItem_val, Unit)
-Make_Extractor (gtk_check_menu_item_get, GtkCheckMenuItem_val,
-		active, Val_bool)
 
 /* gtkradiomenuitem.h */
 
