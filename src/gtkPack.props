@@ -60,8 +60,6 @@ class Layout set : Container {
   "width"                guint                : Read / Write
   method put : "[>`widget] obj -> x:int -> y:int -> unit"
   method move : "[>`widget] obj -> x:int -> y:int -> unit"
-  method freeze
-  method thaw
   method bin_window : "Gdk.window"
 }
 

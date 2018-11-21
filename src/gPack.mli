@@ -192,7 +192,6 @@ class layout :
     val obj : 'a obj
     method event : event_ops
     method bin_window : Gdk.window
-    method freeze : unit -> unit
     method hadjustment : GData.adjustment
     method height : int
     method move : widget -> x:int -> y:int -> unit
@@ -201,7 +200,6 @@ class layout :
     method set_height : int -> unit
     method set_vadjustment : GData.adjustment -> unit
     method set_width : int -> unit
-    method thaw : unit -> unit
     method vadjustment : GData.adjustment
     method width : int
   end
