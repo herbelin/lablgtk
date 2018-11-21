@@ -164,39 +164,3 @@ val scrollbar :
   ?lower_stepper_sensitivity:Tags.sensitivity_type ->
   ?upper_stepper_sensitivity:Tags.sensitivity_type ->
   ?packing:(widget -> unit) -> ?show:bool -> unit -> range
-
-(** {3 GtkRuler} *)
-
-(** @gtkdoc gtk GtkRuler
-    @gtkdoc gtk GtkHRuler
-    @gtkdoc gtk GtkVRuler *)
-class ruler :
-  ([> Gtk.ruler] as 'a) Gtk.obj ->
-  object
-    inherit GObj.widget_full
-    val obj : 'a Gtk.obj
-    method event : GObj.event_ops
-    method set_metric : Tags.metric_type -> unit
-    method set_lower : float -> unit
-    method set_max_size : float -> unit
-    method set_metric : Gtk.Tags.metric_type -> unit
-    method set_position : float -> unit
-    method set_upper : float -> unit
-    method lower : float
-    method max_size : float
-    method position : float
-    method upper : float
-  end
-
-(** @gtkdoc gtk GtkRuler
-    @gtkdoc gtk GtkHRuler
-    @gtkdoc gtk GtkVRuler
-    @param metric default value is [`PIXELS] *)
-val ruler :
-  Tags.orientation ->
-  ?metric:Tags.metric_type ->
-  ?lower:float ->
-  ?upper:float ->
-  ?max_size:float ->
-  ?position:float ->
-  ?packing:(GObj.widget -> unit) -> ?show:bool -> unit -> ruler
