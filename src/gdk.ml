@@ -205,6 +205,7 @@ module Window = struct
     = "ml_gdk_window_clear"
   external get_xid : window -> xid = "ml_GDK_WINDOW_XID"
   let get_xwindow = get_xid
+  external get_visual : window -> visual = "ml_gdk_window_get_visual"
 
   (* let set_back_pixmap w pix = 
     let null_pixmap = (Obj.magic Gpointer.boxed_null : pixmap) in
