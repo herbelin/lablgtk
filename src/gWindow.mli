@@ -262,6 +262,14 @@ class type ['a] message_dialog =
     method set_markup : string -> unit (** @since GTK 2.4 *)
     method message_type : Tags.message_type
     method set_message_type : Tags.message_type -> unit
+    method text : string
+    method set_text : string -> unit
+    method use_markup : bool
+    method set_use_markup : bool -> unit
+    method secondary_text : string
+    method set_secondary_text : string -> unit
+    method secondary_use_markup : bool
+    method set_secondary_use_markup : bool -> unit
   end
 
 (** @gtkdoc gtk GtkMessageDialog *)
