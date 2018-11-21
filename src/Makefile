@@ -18,6 +18,7 @@ DLLDIR = $(LIBDIR)/stublibs
 
 include $(CONFIG)
 #GTKCFLAGS += -Werror -Wno-error=deprecated-declarations
+GTKCFLAGS += -Wno-deprecated-declarations
 
 TARGETS = varcc$(XE) lablgtktop$(XE) lablgtk2$(XB) gdk_pixbuf_mlsource$(XE) \
 	$(THINITOBJS) build.ml
