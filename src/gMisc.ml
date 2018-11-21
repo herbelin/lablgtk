@@ -161,21 +161,6 @@ let drawing_area ?width ?height ?packing ?show () =
   may_set_size w ?width ?height;
   pack_return (new drawing_area w) ~packing ~show
 
-class curve obj = object
-  inherit drawing_area (obj : Gtk.curve obj)
-  inherit curve_props
-  method reset () = Curve.reset obj
-  method set_gamma = Curve.set_gamma obj
-  method set_vector = Curve.set_vector obj
-  method get_vector = Curve.get_vector obj
-end
-
-let curve ?width ?height =
-  Curve.make_params [] ~cont:(fun pl ?packing ?show () ->
-    let w = Curve.create pl in
-    may_set_size w ?width ?height;
-    pack_return (new curve w) ~packing ~show)
-
 class misc obj = object
   inherit ['a] widget_impl obj
   inherit misc_props
