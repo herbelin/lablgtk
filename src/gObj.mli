@@ -194,7 +194,6 @@ class drag_ops : Gtk.widget obj ->
     method source_set :
       ?modi:Gdk.Tags.modifier list ->
       ?actions:Gdk.Tags.drag_action list -> target_entry list -> unit
-    method source_set_icon : ?colormap:Gdk.colormap -> GDraw.pixmap -> unit
     method source_unset : unit -> unit
     method unhighlight : unit -> unit
   end
@@ -213,7 +212,6 @@ and misc_ops : Gtk.widget obj ->
       target:string -> ?info:int -> Gdk.atom -> unit
     method allocation : rectangle
     method clear_selection_targets : Gdk.atom -> unit
-    method colormap : Gdk.colormap
     method connect : misc_signals
     method convert_selection : target:string -> ?time:int32 -> Gdk.atom -> bool
     method create_pango_context : GPango.context_rw
@@ -319,8 +317,6 @@ and drag_context :
     method context : Gdk.drag_context
     method finish : success:bool -> del:bool -> time:int32 -> unit
     method source_widget : widget 
-    method set_icon_pixmap :
-      ?colormap:Gdk.colormap -> GDraw.pixmap -> hot_x:int -> hot_y:int -> unit
     method set_icon_widget : widget -> hot_x:int -> hot_y:int -> unit
     method status : ?time:int32 -> Gdk.Tags.drag_action option -> unit
     method suggested_action : Gdk.Tags.drag_action

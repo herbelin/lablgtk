@@ -120,7 +120,7 @@ class style st = object
   val style = st
   method as_style = style
   method copy = {< style = Style.copy style >}
-  method colormap = Style.get_colormap style
+(*  method colormap = Style.get_colormap style*)
 (*  method font = Style.get_font style*)
   method bg = Style.get_bg style
   method set_bg = iter_setcol Style.set_bg style
@@ -197,9 +197,6 @@ and drag_ops obj = object
   method unhighlight () = DnD.unhighlight obj
   method source_set ?modi:m ?(actions=[]) targets =
     DnD.source_set obj ?modi:m ~actions ~targets:(Array.of_list targets)
-  method source_set_icon ?(colormap = Gdk.Color.get_system_colormap ())
-      (pix : GDraw.pixmap) =
-    DnD.source_set_icon obj ~colormap pix#pixmap ?mask:pix#mask
   method source_unset () = DnD.source_unset obj
 end
 
@@ -309,7 +306,6 @@ and misc_ops obj = object (self)
     try new widget (unsafe_cast (Widget.get_toplevel obj))
     with Gpointer.Null -> failwith "GObj.misc_ops#toplevel"
   method window = Widget.window obj
-  method colormap = Widget.get_colormap obj
   method visual = Widget.get_visual obj
   method visual_depth = Gdk.Visual.depth (Widget.get_visual obj)
   method pointer = Widget.get_pointer obj

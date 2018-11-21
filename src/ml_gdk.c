@@ -93,8 +93,8 @@ value ml_gdk_get_platform()
 }
 
 /* Colormap */
-
-ML_0 (gdk_colormap_get_system, Val_GdkColormap)
+/* not in 3
+ML_0 (gdk_colormap_get_system, Val_GdkColormap) */
 
 /* Screen geometry */
 
@@ -135,8 +135,11 @@ ML_1 (gdk_visual_get_screen, GdkVisual_val, Val_GdkScreen)
 ML_1 (gdk_visual_get_visual_type, GdkVisual_val, Val_gdkVisualType)
 ML_1 (gdk_visual_get_depth, GdkVisual_val, Val_int)
 
-/* Color */
+/* RGBA */
+/* TODO */
 
+/* Color */
+/* not in 3
 ML_2 (gdk_colormap_new, GdkVisual_val, Bool_val, Val_GdkColormap)
 ML_1 (gdk_colormap_get_visual, GdkColormap_val, Val_GdkVisual)
 
@@ -153,7 +156,7 @@ CAMLprim value ml_gdk_color_black (value cmap)
     gdk_color_black (GdkColormap_val(cmap), &color);
     return Val_copy(color);
 }
-
+*/
 CAMLprim value ml_gdk_color_parse (char *spec)
 {
     GdkColor color;
@@ -161,10 +164,11 @@ CAMLprim value ml_gdk_color_parse (char *spec)
         ml_raise_gdk ("color_parse");
     return Val_copy(color);
 }
-
 ML_1 (gdk_color_to_string, GdkColor_val, Val_string)
 
+/* Removed in GdkColor 3.0
 ML_2 (gdk_color_alloc, GdkColormap_val, GdkColor_val, Val_bool)
+*/
 
 CAMLprim value ml_GdkColor (value red, value green, value blue)
 {
