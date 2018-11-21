@@ -58,8 +58,7 @@ class window_skel obj = object (self)
       ?resize_inc ?win_gravity ?pos ?user_pos ?user_size (as_widget w)
   method set_transient_for w =
     set obj P.transient_for (Some w)
-  method set_wm_name name = Window.set_wmclass obj ~name
-  method set_wm_class cls = Window.set_wmclass obj ~clas:cls
+  method set_wmclass = Window.set_wmclass obj
   method show () = Widget.show obj
   method present () = Window.present obj
   method iconify () = Window.iconify obj
@@ -78,11 +77,10 @@ class window obj = object
 end
 
 let make_window ~create =
-  Window.make_params ~cont:(fun pl ?wm_name ?wm_class ->
+  Window.make_params ~cont:(fun pl ?wmclass ->
     Container.make_params pl ~cont:(fun pl ?(show=false) () ->
       let (w : #window_skel) = create pl in
-      may w#set_wm_name wm_name;
-      may w#set_wm_class wm_class;
+      may (fun (name,clas) -> w#set_wmclass ~name ~clas) wmclass;
       if show then w#show ();
       w))
 

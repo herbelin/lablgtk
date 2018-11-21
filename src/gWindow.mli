@@ -79,8 +79,7 @@ class window_skel : 'a obj ->
     method set_title : string -> unit
     method set_transient_for : Gtk.window obj -> unit
     method set_type_hint : Gdk.Tags.window_type_hint -> unit
-    method set_wm_class : string -> unit
-    method set_wm_name : string -> unit
+    method set_wmclass : name:string -> clas:string -> unit
     method accept_focus : bool
     method allow_grow : bool
     method allow_shrink : bool
@@ -143,8 +142,7 @@ val window :
   ?screen:Gdk.screen ->
   ?type_hint:Gdk.Tags.window_type_hint ->
   ?urgency_hint:bool ->
-  ?wm_name:string ->
-  ?wm_class:string ->
+  ?wmclass:(string * string) ->
   ?border_width:int ->
   ?width:int -> ?height:int -> ?show:bool -> unit -> window
 (** @param kind default value is [`TOPLEVEL]
@@ -227,8 +225,7 @@ val dialog :
   ?screen:Gdk.screen ->
   ?type_hint:Gdk.Tags.window_type_hint ->
   ?urgency_hint:bool ->
-  ?wm_name:string ->
-  ?wm_class:string ->
+  ?wmclass:(string * string) ->
   ?border_width:int ->
   ?width:int -> ?height:int -> ?show:bool -> unit -> 'a dialog
 (** @param no_separator default value is [false]
@@ -294,8 +291,7 @@ val message_dialog :
   ?screen:Gdk.screen ->
   ?type_hint:Gdk.Tags.window_type_hint ->
   ?urgency_hint:bool ->
-  ?wm_name:string ->
-  ?wm_class:string ->
+  ?wmclass:(string * string) ->
   ?border_width:int ->
   ?width:int -> ?height:int -> ?show:bool -> unit -> 'a message_dialog
 
@@ -390,8 +386,7 @@ val about_dialog :
   ?screen:Gdk.screen ->
   ?type_hint:Gdk.Tags.window_type_hint ->
   ?urgency_hint:bool ->
-  ?wm_name:string ->
-  ?wm_class:string ->
+  ?wmclass:(string * string) ->
   ?border_width:int ->
   ?width:int -> ?height:int -> ?show:bool -> unit -> about_dialog
 
@@ -446,8 +441,7 @@ val file_chooser_dialog :
   ?screen:Gdk.screen ->
   ?type_hint:Gdk.Tags.window_type_hint ->
   ?urgency_hint:bool ->
-  ?wm_name:string ->
-  ?wm_class:string ->
+  ?wmclass:(string * string) ->
   ?border_width:int ->
   ?width:int -> ?height:int -> ?show:bool -> unit -> 'a file_chooser_dialog
 
