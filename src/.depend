@@ -44,14 +44,13 @@ gEdit.cmo : ogtkEditProps.cmo gtkEdit.cmo gtkBase.cmo gtk.cmo gobject.cmi \
     gaux.cmo gTree.cmi gObj.cmi gMenu.cmi gData.cmi gContainer.cmi gEdit.cmi
 gEdit.cmx : ogtkEditProps.cmx gtkEdit.cmx gtkBase.cmx gtk.cmx gobject.cmx \
     gaux.cmx gTree.cmx gObj.cmx gMenu.cmx gData.cmx gContainer.cmx gEdit.cmi
-gEdit.cmi : gtkStock.cmo gtkSignal.cmi gtkEnums.cmo gtk.cmo gdkPixbuf.cmi \
-    gdkEvent.cmo gTree.cmi gObj.cmi gMenu.cmi gData.cmi gContainer.cmi
+gEdit.cmi : gtkStock.cmo gtkSignal.cmi gtk.cmo gdkPixbuf.cmi gdkEvent.cmo \
+    gTree.cmi gObj.cmi gMenu.cmi gData.cmi gContainer.cmi
 gFile.cmo : ogtkFileProps.cmo gtkSignal.cmi gtkFile.cmo gtkEnums.cmo gtk.cmo \
     gobject.cmi gaux.cmo gPack.cmi gObj.cmi gContainer.cmi gFile.cmi
 gFile.cmx : ogtkFileProps.cmx gtkSignal.cmx gtkFile.cmx gtkEnums.cmx gtk.cmx \
     gobject.cmx gaux.cmx gPack.cmx gObj.cmx gContainer.cmx gFile.cmi
-gFile.cmi : gtkSignal.cmi gtkEnums.cmo gtk.cmo gPack.cmi gObj.cmi \
-    gContainer.cmi
+gFile.cmi : gtkSignal.cmi gtk.cmo gPack.cmi gObj.cmi gContainer.cmi
 gMain.cmo : gtkMain.cmo gtk.cmo glib.cmi gdk.cmi gObj.cmi gData.cmi \
     gMain.cmi
 gMain.cmx : gtkMain.cmx gtk.cmx glib.cmx gdk.cmx gObj.cmx gData.cmx \
