@@ -57,26 +57,16 @@ end
 
 (* GtkObject *)
 
-class type ['a] objvar = object
-  val obj : 'a obj
-end
+class type ['a] objvar =
+  object val obj : 'a obj end
 
 class gtkobj obj = object
   val obj = obj
-  method destroy () = Object.destroy obj
   method get_oid = get_oid obj
 end
 
-class gtkobj_signals_impl obj = object (self)
-  inherit ['a] gobject_signals obj
-  method destroy = self#connect Object.S.destroy
-end
-
 class type gtkobj_signals =
-  object ('a)
-    method after : 'a
-    method destroy : callback:(unit -> unit) -> GtkSignal.id
-  end
+  object ('a) method after : 'a end
 
 (* Widget *)
 
@@ -121,7 +111,6 @@ class event_ops obj = object
   method add = Widget.add_events obj
   method connect = new event_signals obj
   method send : Gdk.Tags.event_type Gdk.event -> bool = Widget.event obj
-  method set_extensions = set Widget.P.extension_events obj
 end
 
 let iter_setcol set style =
@@ -222,13 +211,15 @@ and drag_context context = object
     new widget (unsafe_cast (DnD.get_source_widget context))
   method set_icon_widget (w : widget) =
     DnD.set_icon_widget context (w#as_widget)
+(*
   method set_icon_pixmap ?(colormap = Gdk.Color.get_system_colormap ())
       (pix : GDraw.pixmap) =
     DnD.set_icon_pixmap context ~colormap pix#pixmap ?mask:pix#mask
+*)
 end
 
 and misc_signals obj = object (self)
-  inherit gtkobj_signals_impl obj
+  inherit [_] gobject_signals obj
   method show = self#connect Signals.show
   method hide = self#connect Signals.hide
   method map = self#connect Signals.map
@@ -259,13 +250,11 @@ end
 
 and misc_ops obj = object (self)
   inherit gobject_ops obj
-  method get_flag = Object.get_flag obj
   method connect = new misc_signals obj
   method show () = Widget.show obj
   method unparent () = Widget.unparent obj
   method show_all () = Widget.show_all obj
   method hide () = Widget.hide obj
-  method hide_all () = Widget.hide_all obj
   method map () = Widget.map obj
   method unmap () = Widget.unmap obj
   method realize () = Widget.realize obj
@@ -323,7 +312,7 @@ and misc_ops obj = object (self)
   method visual_depth = Gdk.Visual.depth (Widget.get_visual obj)
   method pointer = Widget.get_pointer obj
   method style = new style (get P.style obj)
-  method visible = self#get_flag `VISIBLE
+  method visible = get P.visible obj
   method parent =
     may_map (fun w -> new widget (unsafe_cast w)) (get P.parent obj)
   method allocation = Widget.allocation obj
@@ -356,12 +345,16 @@ and widget obj = object (self)
   method coerce = (self :> widget)
 end
 
-(* just to check that GDraw.misc_ops is compatible with misc_ops *)
-let _ = fun (x : #GDraw.misc_ops) -> (x : misc_ops)
+class widget_signals_impl obj = object (self)
+  inherit [[>Gtk.widget]] gobject_signals obj
+  method destroy = self#connect Widget.S.destroy
+end
 
-class widget_signals_impl (obj : [>Gtk.widget] obj) = gtkobj_signals_impl obj
-
-class type widget_signals = gtkobj_signals
+class type widget_signals =
+  object ('a)
+    method after : 'a
+    method destroy : callback:(unit -> unit) -> GtkSignal.id
+  end
 
 class ['a] widget_impl (obj : 'a obj) = widget obj
 

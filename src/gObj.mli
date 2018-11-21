@@ -62,24 +62,14 @@ class type ['a] objvar = object
   *)
 end
 
-class gtkobj : ([> `gtk] as 'a) obj ->
+class gtkobj : 'a obj ->
   object
     val obj : 'a obj
-    method destroy : unit -> unit
     method get_oid : int
   end
 
-class gtkobj_signals_impl : ([>`gtk] as 'a) obj ->
-  object ('b)
-    inherit ['a] gobject_signals
-    method destroy : callback:(unit -> unit) -> GtkSignal.id
-  end
-
 class type gtkobj_signals =
-  object ('a)
-    method after : 'a
-    method destroy : callback:(unit -> unit) -> GtkSignal.id
-  end
+  object ('a) method after : 'a end
 
 (** {3 GtkWidget} *)
 
@@ -135,7 +125,6 @@ class event_ops : [> widget] obj ->
     method add : Gdk.Tags.event_mask list -> unit
     method connect : event_signals
     method send : GdkEvent.any -> bool
-    method set_extensions : Gdk.Tags.extension_mode -> unit
   end
 
 (** @gtkdoc gtk GtkStyle *)
@@ -186,6 +175,7 @@ class selection_context :
   end
 
 (** @gtkdoc gtk gtk-Drag-and-Drop *)
+
 class drag_ops : Gtk.widget obj ->
   object
     method connect : drag_signals
@@ -222,13 +212,11 @@ and misc_ops : Gtk.widget obj ->
     method convert_selection : target:string -> ?time:int32 -> Gdk.atom -> bool
     method create_pango_context : GPango.context_rw
     method draw : Gdk.Rectangle.t option -> unit
-    method get_flag : Tags.widget_flags -> bool
     method grab_default : unit -> unit
     method grab_focus : unit -> unit
     method grab_selection : ?time:int32 -> Gdk.atom -> bool
     method has_tooltip : bool
     method hide : unit -> unit
-    method hide_all : unit -> unit
     method intersect : Gdk.Rectangle.t -> Gdk.Rectangle.t option
     method is_ancestor : widget -> bool
     method map : unit -> unit
@@ -293,7 +281,7 @@ and widget : ([> Gtk.widget] as 'a) obj ->
 (** @gtkdoc gtk GtkWidget *)
 and misc_signals : Gtk.widget obj ->
   object ('b)
-    inherit gtkobj_signals 
+    inherit gtkobj_signals
     method hide : callback:(unit -> unit) -> GtkSignal.id
     method map : callback:(unit -> unit) -> GtkSignal.id
     method parent_set : callback:(widget option -> unit) -> GtkSignal.id
@@ -366,7 +354,11 @@ class ['a] widget_impl : ([> Gtk.widget] as 'a) obj ->
   end
 
 (** @gtkdoc gtk GtkWidget *)
-class type widget_signals = gtkobj_signals
+class type widget_signals =
+  object
+    inherit gtkobj_signals
+    method destroy : callback:(unit -> unit) -> GtkSignal.id
+  end
 
 (** @gtkdoc gtk GtkWidget *)
 class widget_signals_impl : ([> Gtk.widget] as 'a) obj ->
