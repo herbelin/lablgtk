@@ -129,10 +129,10 @@ class entry_signals : [> Gtk.entry] obj ->
     method notify_overwrite_mode :
       callback:(bool -> unit) -> GtkSignal.id (** @Since GTK 2.14 *)
     method icon_press :
-      callback:(GtkEnums.entry_icon_position -> GdkEvent.Button.t -> unit) ->
+      callback:(Tags.entry_icon_position -> GdkEvent.Button.t -> unit) ->
         GtkSignal.id (** @Since GTK 2.16 *)
     method icon_released :
-      callback:(GtkEnums.entry_icon_position -> GdkEvent.Button.t -> unit) ->
+      callback:(Tags.entry_icon_position -> GdkEvent.Button.t -> unit) ->
         GtkSignal.id (** @Since GTK 2.16 *)
     method notify_primary_icon_activatable :
       callback:(bool -> unit) -> GtkSignal.id (** @Since GTK 2.16 *)
