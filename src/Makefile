@@ -215,14 +215,14 @@ endif
 GTKOBJS =  ml_gtk$(XO) ml_pango$(XO) ml_gtkaction$(XO) \
 	ml_gtkbin$(XO) ml_gtkbroken$(XO) ml_gtkbutton$(XO) \
 	ml_gtkassistant$(XO) \
-	ml_gtkedit$(XO) ml_gtkfile$(XO) ml_gtklist$(XO) \
+	ml_gtkedit$(XO) ml_gtkfile$(XO) \
 	ml_gtkmenu$(XO) ml_gtkmisc$(XO) \
 	ml_gtkpack$(XO) ml_gtkrange$(XO) ml_gtkstock$(XO) \
 	ml_gtktext$(XO) ml_gtktree$(XO)
 COBJS = ml_gdkpixbuf$(XO) ml_gdk$(XO) ml_glib$(XO) ml_gobject$(XO) \
 	ml_gpointer$(XO) ml_gvaluecaml$(XO) wrappers$(XO) $(GTKOBJS)
 GTKPROPS += gtkBase.props gtkBin.props gtkButton.props gtkEdit.props \
-	gtkList.props gtkMenu.props gtkMisc.props gtkPack.props \
+	gtkMenu.props gtkMisc.props gtkPack.props \
 	gtkRange.props gtkText.props gtkTree.props gtkFile.props \
 	gtkAction.props gtkBroken.props gtkAssistant.props
 MLOBJS1 =  gaux.cmo gpointer.cmo gutf8.cmo glib.cmo gobject.cmo
@@ -231,12 +231,12 @@ MLOBJS2 = pango.cmo gdk.cmo gdkEvent.cmo gdkKeysyms.cmo gdkPixbuf.cmo \
 	gtk.cmo gtkSignal.cmo gtkStock.cmo gtkObject.cmo
 MLOBJS3 = gtkData.cmo gtkBase.cmo gtkPack.cmo gtkButton.cmo \
 	gtkAssistant.cmo \
-	gtkMenu.cmo gtkMisc.cmo gtkWindow.cmo gtkList.cmo \
+	gtkMenu.cmo gtkMisc.cmo gtkWindow.cmo \
 	gtkBin.cmo gtkEdit.cmo gtkRange.cmo gtkText.cmo gtkTree.cmo \
 	gtkFile.cmo gtkMain.cmo gtkBroken.cmo \
 	gPango.cmo gDraw.cmo gObj.cmo ogtkBaseProps.cmo gData.cmo
 MLOBJS4 = gMain.cmo gContainer.cmo gPack.cmo gButton.cmo gText.cmo \
-	gMenu.cmo gMisc.cmo gTree.cmo gList.cmo gFile.cmo gWindow.cmo \
+	gMenu.cmo gMisc.cmo gTree.cmo gFile.cmo gWindow.cmo \
 	gAssistant.cmo \
 	gBin.cmo gEdit.cmo gRange.cmo gAction.cmo gBroken.cmo \
 	gUtil.cmo gToolbox.cmo
@@ -562,7 +562,7 @@ DOCFILES = gPango.ml gDraw.mli gObj.mli gMain.mli gData.mli \
         gdk.mli gdkEvent.ml gdkPixbuf.mli \
         gtk.ml pango.ml gtkSignal.mli gtkObject.ml \
         gtkStock.ml gtkData.ml gtkBase.ml gtkPack.ml gtkButton.ml \
-        gtkMenu.ml gtkMisc.ml gtkWindow.ml gtkList.ml \
+        gtkMenu.ml gtkMisc.ml gtkWindow.ml \
         gtkEdit.ml gtkRange.ml gtkText.ml gtkTree.ml \
         gtkFile.ml gtkMain.ml \
         $(GTKPROPS:%.props=%Props.ml)
