@@ -49,6 +49,7 @@ CAMLprim value ml_gtkedit_init(value unit)
 #ifdef HASGTK24
         gtk_combo_box_get_type() +
         gtk_combo_box_entry_get_type() +
+        gtk_combo_box_text_get_type() +
         gtk_entry_completion_get_type();
 #else
         0;

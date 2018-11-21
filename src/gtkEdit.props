@@ -143,6 +143,9 @@ class ComboBoxEntry set : ComboBox {
   "text-column"          gint                 : Read / Write / NoSet
 }
 
+class ComboBoxText set : ComboBox {
+}
+
 class EntryCompletion set gobject {
   "minimum-key-length"   gint                 : Read / Write
   "model"                GtkTreeModel	      : Read / Write
