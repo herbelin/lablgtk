@@ -58,8 +58,6 @@ module Image = Image
 
 module Label = Label
 
-module TipsQuery = TipsQuery
-
 module Separator = Separator
 
 module FontSelection = FontSelection

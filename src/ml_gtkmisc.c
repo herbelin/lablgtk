@@ -52,7 +52,6 @@ CAMLprim value ml_gtkmisc_init(value unit)
         gtk_arrow_get_type() +
         gtk_image_get_type() +
         gtk_label_get_type() +
-        gtk_tips_query_get_type() +
         gtk_pixmap_get_type() +
         gtk_hseparator_get_type() +
         gtk_vseparator_get_type() +
@@ -177,12 +176,5 @@ CAMLprim value ml_gtk_label_get_selection_bounds (value label)
   return r;
 }
 
-/* gtktipsquery.h */
-
-#define GtkTipsQuery_val(val) check_cast(GTK_TIPS_QUERY,val)
-ML_1 (gtk_tips_query_start_query, GtkTipsQuery_val, Unit)
-ML_1 (gtk_tips_query_stop_query, GtkTipsQuery_val, Unit)
-
-/* gtkpixmap.h */
 
 /* gtk[hv]separator.h */

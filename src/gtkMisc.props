@@ -81,6 +81,7 @@ class Label set wrap : Misc {
   signal populate_popup : GtkMenu
 }
 
+(* not in 3
 class TipsQuery set wrap wrapsig : Label {
   "caller"               GtkWidget_opt        : Read / Write
   "emit-always"          gboolean             : Read / Write
@@ -94,6 +95,7 @@ class TipsQuery set wrap wrapsig : Label {
   signal widget_selected :
     GtkWidget_opt text:string privat:string GdkEventButton -> bool
 }
+*)
 
 class Arrow set wrap : Misc {
   "arrow-type"(kind)     GtkArrowType         : Read / Write

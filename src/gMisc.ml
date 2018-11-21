@@ -225,25 +225,6 @@ let label ?text ?markup ?use_underline ?mnemonic_widget =
 
 let label_cast w = new label (Label.cast w#as_widget)
 
-class tips_query_signals obj = object
-  inherit widget_signals_impl (obj : Gtk.tips_query obj)
-  inherit tips_query_sigs
-end
-
-class tips_query obj = object
-  inherit label_skel obj
-  method start () = TipsQuery.start_query obj
-  method stop () = TipsQuery.stop_query obj
-  inherit tips_query_props
-  method connect = new tips_query_signals obj
-end
-
-let tips_query ?caller =
-  let caller = may_map (fun w -> w#as_widget) caller in
-  TipsQuery.make_params [] ?caller ~cont:(
-  Misc.all_params ~cont:(fun p ?packing ?show () ->
-    pack_return (new tips_query (TipsQuery.create p)) ~packing ~show))
-
 class color_selection obj = object
   inherit [Gtk.color_selection] GObj.widget_impl obj
   method connect = new GObj.widget_signals_impl obj

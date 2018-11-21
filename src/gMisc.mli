@@ -375,63 +375,6 @@ val label :
   ?packing:(widget -> unit) -> ?show:bool -> unit -> label
 val label_cast : < as_widget : 'a obj ; .. > -> label
 
-(** {4 Tips query} *)
-
-(** @gtkdoc gtk GtkTipsQuery
-    @deprecated . *)
-class tips_query_signals : Gtk.tips_query obj ->
-  object
-    inherit GObj.widget_signals
-    method start_query : callback:(unit -> unit) -> GtkSignal.id
-    method stop_query : callback:(unit -> unit) -> GtkSignal.id
-    method widget_entered :
-      callback:(widget option -> text:string -> privat:string -> unit) ->
-      GtkSignal.id
-    method widget_selected :
-      callback:(widget option -> text:string -> privat:string ->
-                GdkEvent.Button.t -> bool) ->
-      GtkSignal.id
-    method notify_caller : callback:(GObj.widget option -> unit) -> GtkSignal.id
-    method notify_emit_always : callback:(bool -> unit) -> GtkSignal.id
-    method notify_label_inactive : callback:(string -> unit) -> GtkSignal.id
-    method notify_label_no_tip : callback:(string -> unit) -> GtkSignal.id
-  end
-
-(** Displays help about widgets in the user interface
-    @gtkdoc gtk GtkTipsQuery
-    @deprecated . *)
-class tips_query : Gtk.tips_query obj ->
-  object
-    inherit label_skel
-    val obj : Gtk.tips_query obj
-    method connect : tips_query_signals
-    method start : unit -> unit
-    method stop : unit -> unit
-    method set_caller : widget option -> unit
-    method set_emit_always : bool -> unit
-    method set_label_inactive : string -> unit
-    method set_label_no_tip : string -> unit
-    method caller : widget option
-    method emit_always : bool
-    method label_inactive : string
-    method label_no_tip : string
-  end
-
-(** @gtkdoc gtk GtkTipsQuery
-    @deprecated . *)
-val tips_query :
-  ?caller:#widget ->
-  ?emit_always:bool ->
-  ?label_inactive:string ->
-  ?label_no_tip:string ->
-  ?xalign:float ->
-  ?yalign:float ->
-  ?xpad:int ->
-  ?ypad:int ->
-  ?width:int ->
-  ?height:int ->
-  ?packing:(widget -> unit) -> ?show:bool -> unit -> tips_query
-
 (** {3 Color and font selection} *)
 
 (** A widget used to select a color
