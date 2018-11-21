@@ -37,8 +37,6 @@ class ButtonBox hv : Box {
 class Fixed : Container {
   method put : "[>`widget] obj -> x:int -> y:int -> unit"
   method move : "[>`widget] obj -> x:int -> y:int -> unit"
-  method set_has_window : "bool -> unit"
-  method get_has_window : "bool"
 }
 
 class Paned hv wrap : Container {

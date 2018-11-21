@@ -127,8 +127,9 @@ Unsupported_24 (gtk_button_box_set_child_secondary)
 #define GtkFixed_val(val) check_cast(GTK_FIXED,val)
 ML_4 (gtk_fixed_put, GtkFixed_val, GtkWidget_val, (gint16)Long_val, (gint16)Long_val, Unit)
 ML_4 (gtk_fixed_move, GtkFixed_val, GtkWidget_val, (gint16)Long_val, (gint16)Long_val, Unit)
+/* not in 3
 ML_2 (gtk_fixed_set_has_window, GtkFixed_val, Int_val, Unit)
-ML_1 (gtk_fixed_get_has_window, GtkFixed_val, Val_bool)
+ML_1 (gtk_fixed_get_has_window, GtkFixed_val, Val_bool) */
 
 /* gtklayout.h */
 

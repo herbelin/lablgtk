@@ -96,15 +96,10 @@ class fixed obj = object
   method event = new GObj.event_ops obj
   method put w = Fixed.put obj (as_widget w)
   method move w = Fixed.move obj (as_widget w)
-  method set_has_window = Fixed.set_has_window obj
-  method has_window = Fixed.get_has_window obj
 end
 
-let fixed ?has_window =
-  pack_container [] ~create:(fun p ->
-    let w = new fixed (Fixed.create p) in
-    may has_window ~f:w#set_has_window;
-    w)
+let fixed =
+  pack_container [] ~create:(fun p -> new fixed (Fixed.create p))
 
 class layout obj = object
   inherit container_full obj
