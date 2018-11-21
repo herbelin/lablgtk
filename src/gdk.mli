@@ -296,16 +296,6 @@ module Rectangle :
     val height : t -> int
   end
 
-module Drawable :
-  sig
-    val cast : 'a obj -> [`drawable] obj
-    val get_visual : [>`drawable] obj -> visual
-    val get_depth : [>`drawable] obj -> int
-    val get_colormap : [>`drawable] obj -> colormap
-    val get_size : [>`drawable] obj -> int * int
-end
-
-
 module Window :
   sig
     val cast : 'a obj -> window

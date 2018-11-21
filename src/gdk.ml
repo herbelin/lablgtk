@@ -367,18 +367,6 @@ module Rectangle = struct
   external height : t -> int = "ml_GdkRectangle_height"
 end
 
-module Drawable = struct
-  let cast w : [`drawable] obj = Gobject.try_cast w "GdkDrawable"
-  external get_visual : [>`drawable] obj -> visual
-    = "ml_gdk_drawable_get_visual"
-  external get_depth : [>`drawable] obj -> int
-    = "ml_gdk_drawable_get_depth"
-  external get_colormap : [>`drawable] obj -> colormap
-    = "ml_gdk_drawable_get_colormap"
-  external get_size : [>`drawable] obj -> int * int
-    = "ml_gdk_drawable_get_size"
-end
-
 module Windowing = struct
   external get : unit -> [`QUARTZ | `WIN32 | `X11] = "ml_gdk_get_platform"
   let platform = get ()
