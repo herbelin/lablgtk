@@ -47,7 +47,6 @@ CAMLprim value ml_gtkmenu_init(value unit)
         gtk_image_menu_item_get_type() +
         gtk_check_menu_item_get_type() +
         gtk_radio_menu_item_get_type() +
-        gtk_option_menu_get_type() +
         gtk_menu_bar_get_type() +
         gtk_menu_get_type();
     return Val_GType(t);
@@ -126,17 +125,6 @@ ML_2 (gtk_radio_menu_item_new_with_mnemonic, item_group_val,
       String_val, Val_GtkWidget_sink)
 ML_2 (gtk_radio_menu_item_set_group, GtkRadioMenuItem_val,
       item_group_val, Unit)
-
-/* gtkoptionmenu.h */
-
-#define GtkOptionMenu_val(val) check_cast(GTK_OPTION_MENU,val)
-/*
-ML_0 (gtk_option_menu_new, Val_GtkWidget_sink)
-ML_1 (gtk_option_menu_get_menu, GtkOptionMenu_val, Val_GtkWidget_sink)
-ML_2 (gtk_option_menu_set_menu, GtkOptionMenu_val, GtkWidget_val, Unit)
-*/
-ML_1 (gtk_option_menu_remove_menu, GtkOptionMenu_val, Unit)
-ML_2 (gtk_option_menu_set_history, GtkOptionMenu_val, Int_val, Unit)
 
 /* gtkmenushell.h */
 
