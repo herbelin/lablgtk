@@ -174,36 +174,31 @@ class entry : ([> Gtk.entry] as 'a) obj ->
     method width_chars : int
     method xalign : float
 
-    method set_completion : entry_completion -> unit (** @since GTK 2.4 *)
-    method get_completion : entry_completion option  (** @since GTK 2.4 *)
+    method set_completion : entry_completion -> unit
+    method get_completion : entry_completion option
 
-    method overwrite_mode : bool (** @Since GTK 2.14 *)
-    method set_overwrite_mode : bool -> unit (** @Since GTK 2.14 *)
-    method primary_icon_activatable : bool (** @Since GTK 2.16 *)
-    method primary_icon_sensitive : bool (** @Since GTK 2.16 *)
-    method set_primary_icon_activatable : bool -> unit (** @Since GTK 2.16 *)
+    method overwrite_mode : bool
+    method set_overwrite_mode : bool -> unit
+    method primary_icon_activatable : bool
+    method primary_icon_sensitive : bool
+    method set_primary_icon_activatable : bool -> unit
     method set_primary_icon_name : string -> unit
-        (** @Since GTK 2.16, empty string to delete *)
+        (** empty string to delete *)
     method set_primary_icon_pixbuf : GdkPixbuf.pixbuf -> unit
-        (** @Since GTK 2.16 *)
-    method set_primary_icon_sensitive : bool -> unit (** @Since GTK 2.16 *)
-    method set_primary_icon_stock : GtkStock.id -> unit (** @Since GTK 2.16 *)
+    method set_primary_icon_sensitive : bool -> unit
+    method set_primary_icon_stock : GtkStock.id -> unit
     method set_primary_icon_tooltip_markup : string -> unit
-        (** @Since GTK 2.16 *)
-    method set_primary_icon_tooltip_text : string -> unit (** @Since GTK 2.16 *)
-    method secondary_icon_activatable : bool (** @Since GTK 2.16 *)
-    method secondary_icon_sensitive : bool (** @Since GTK 2.16 *)
-    method set_secondary_icon_activatable : bool -> unit (** @Since GTK 2.16 *)
+    method set_primary_icon_tooltip_text : string -> unit
+    method secondary_icon_activatable : bool
+    method secondary_icon_sensitive : bool
+    method set_secondary_icon_activatable : bool -> unit
     method set_secondary_icon_name : string -> unit
-        (** @Since GTK 2.16, empty string to delete *)
+        (** empty string to delete *)
     method set_secondary_icon_pixbuf : GdkPixbuf.pixbuf -> unit
-        (** @Since GTK 2.16 *)
-    method set_secondary_icon_sensitive : bool -> unit (** @Since GTK 2.16 *)
-    method set_secondary_icon_stock : GtkStock.id -> unit (** @Since GTK 2.16 *)
+    method set_secondary_icon_sensitive : bool -> unit
+    method set_secondary_icon_stock : GtkStock.id -> unit
     method set_secondary_icon_tooltip_markup : string -> unit
-        (** @Since GTK 2.16 *)
     method set_secondary_icon_tooltip_text : string -> unit
-        (** @Since GTK 2.16 *)
   end
 
 (** @gtkdoc gtk GtkEntry *)
@@ -239,13 +234,14 @@ class spin_button_signals : [> Gtk.spin_button] obj ->
     method value_changed : callback:(unit -> unit) -> GtkSignal.id
 
     method wrapped : callback:(unit -> unit) -> GtkSignal.id  
-      (** @since GTK 2.10 *)
-    method notify_adjustment : callback:(GData.adjustment -> unit) -> GtkSignal.id
+    method notify_adjustment :
+        callback:(GData.adjustment -> unit) -> GtkSignal.id
     method notify_digits : callback:(int -> unit) -> GtkSignal.id
     method notify_numeric : callback:(bool -> unit) -> GtkSignal.id
     method notify_rate : callback:(float -> unit) -> GtkSignal.id
     method notify_snap_to_ticks : callback:(bool -> unit) -> GtkSignal.id
-    method notify_update_policy : callback:(GtkEnums.spin_button_update_policy -> unit) -> GtkSignal.id
+    method notify_update_policy :
+        callback:(Tags.spin_button_update_policy -> unit) -> GtkSignal.id
     method notify_value : callback:(float -> unit) -> GtkSignal.id
     method notify_wrap : callback:(bool -> unit) -> GtkSignal.id
 
