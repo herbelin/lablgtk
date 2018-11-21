@@ -352,7 +352,6 @@ end
 module Window = struct
   let cast w : window = Gobject.try_cast w "GdkWindow"
   external create_foreign : native_window -> window = "ml_gdk_window_foreign_new"
-  type background_pixmap = [ `NONE | `PARENT_RELATIVE | `PIXMAP of pixmap]
   external get_parent : window -> window = "ml_gdk_window_get_parent"
   external get_position : window -> int * int = "ml_gdk_window_get_position"
   external get_pointer_location : window -> int * int =
