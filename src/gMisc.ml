@@ -49,8 +49,6 @@ end
 
 class statusbar obj = object
   inherit GPack.box (obj : Gtk.statusbar obj)
-  method has_resize_grip = Statusbar.get_has_resize_grip obj
-  method set_has_resize_grip v = Statusbar.set_has_resize_grip obj v
   method new_context ~name =
     new statusbar_context obj (Statusbar.get_context_id obj name)
 end

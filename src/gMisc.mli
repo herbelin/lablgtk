@@ -57,8 +57,6 @@ class statusbar : Gtk.statusbar obj ->
     inherit GPack.box
     val obj : Gtk.statusbar obj
     method new_context : name:string -> statusbar_context
-    method has_resize_grip : bool
-    method set_has_resize_grip : bool -> unit
   end
 
 (** @gtkdoc gtk GtkStatusbar *)
