@@ -34,7 +34,7 @@ CLIBS = liblablgtk2$(XA)
 
 # For -DG_LOG_DOMAIN=\"LablGTK\"
 ifneq ($(TOOLCHAIN),msvc)
-GTKCFLAGS += -imacros ml_domain.h #-w -pedantic -Wimplicit-function-declaration
+GTKCFLAGS += -imacros ml_domain.h
 else
 GTKCFLAGS += /FI ml_domain.h
 endif
