@@ -293,6 +293,8 @@ module Container = struct
     List.rev !l
 end
 
+module Orientable = Orientable
+
 module Bin = Bin
 
 module Item = Item

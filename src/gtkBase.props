@@ -166,6 +166,12 @@ class Adjustment set wrap wrapsig : Object {
   signal value_changed
 }
 
+class Orientable wrap : Object {
+  "orientation"  GtkOrientation  : Read / Write
+  method get_orientation : "GtkEnums.orientation"
+  method set_orientation : "GtkEnums.orientation -> unit"
+}
+
 (* Window and Dialogs *)
 
 class Window set wrap : Bin {

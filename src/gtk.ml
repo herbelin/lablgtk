@@ -141,6 +141,7 @@ type target_entry = { target: string; flags: target_flags list; info: int }
 type box_packing =
     { expand: bool; fill: bool; padding: int; pack_type: pack_type }
 
+type orientable = [`giu|`orientable]
 type adjustment = [`giu|`adjustment]
 type tooltips = [`giu|`tooltips]
 type widget = [`giu|`widget]
@@ -199,7 +200,7 @@ type packer = [container|`packer]
 type paned = [container|`paned]
 type socket = [container|`socket]
 type table = [container|`table]
-type toolbar = [container|`toolbar]
+type toolbar = [container|`toolbar|`orientable]
 type tool_item = [bin|`toolitem]
 type separator_tool_item = [tool_item|`separatortoolitem]
 type tool_button = [tool_item|`toolbutton]
