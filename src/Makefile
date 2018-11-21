@@ -213,7 +213,7 @@ endif
 
 # Files
 GTKOBJS =  ml_gtk$(XO) ml_pango$(XO) ml_gtkaction$(XO) \
-	ml_gtkbin$(XO) ml_gtkbroken$(XO) ml_gtkbutton$(XO) \
+	ml_gtkbin$(XO) ml_gtkbutton$(XO) \
 	ml_gtkassistant$(XO) \
 	ml_gtkedit$(XO) ml_gtkfile$(XO) \
 	ml_gtkmenu$(XO) ml_gtkmisc$(XO) \
@@ -224,7 +224,7 @@ COBJS = ml_gdkpixbuf$(XO) ml_gdk$(XO) ml_glib$(XO) ml_gobject$(XO) \
 GTKPROPS += gtkBase.props gtkBin.props gtkButton.props gtkEdit.props \
 	gtkMenu.props gtkMisc.props gtkPack.props \
 	gtkRange.props gtkText.props gtkTree.props gtkFile.props \
-	gtkAction.props gtkBroken.props gtkAssistant.props
+	gtkAction.props gtkAssistant.props
 MLOBJS1 =  gaux.cmo gpointer.cmo gutf8.cmo glib.cmo gobject.cmo
 ENUMOBJS += gdkEnums.cmo pangoEnums.cmo gtkEnums.cmo
 MLOBJS2 = pango.cmo gdk.cmo gdkEvent.cmo gdkKeysyms.cmo gdkPixbuf.cmo \
@@ -233,12 +233,12 @@ MLOBJS3 = gtkData.cmo gtkBase.cmo gtkPack.cmo gtkButton.cmo \
 	gtkAssistant.cmo \
 	gtkMenu.cmo gtkMisc.cmo gtkWindow.cmo \
 	gtkBin.cmo gtkEdit.cmo gtkRange.cmo gtkText.cmo gtkTree.cmo \
-	gtkFile.cmo gtkMain.cmo gtkBroken.cmo \
+	gtkFile.cmo gtkMain.cmo \
 	gPango.cmo gDraw.cmo gObj.cmo ogtkBaseProps.cmo gData.cmo
 MLOBJS4 = gMain.cmo gContainer.cmo gPack.cmo gButton.cmo gText.cmo \
 	gMenu.cmo gMisc.cmo gTree.cmo gFile.cmo gWindow.cmo \
 	gAssistant.cmo \
-	gBin.cmo gEdit.cmo gRange.cmo gAction.cmo gBroken.cmo \
+	gBin.cmo gEdit.cmo gRange.cmo gAction.cmo \
 	gUtil.cmo gToolbox.cmo
 MLOBJS =  $(MLOBJS1) $(ENUMOBJS) $(MLOBJS2) $(GTKPROPS:.props=Props.cmo) \
 	$(MLOBJS3) $(GTKPROPS:%.props=o%Props.cmo) $(MLOBJS4)
@@ -555,8 +555,8 @@ dist-clean:
 
 DOCFILES = gPango.ml gDraw.mli gObj.mli gMain.mli gData.mli \
 	gContainer.mli gBin.mli gPack.mli gButton.mli gText.mli \
-        gMenu.mli gMisc.mli gTree.mli gFile.mli gList.mli gWindow.mli \
-        gEdit.mli gRange.mli gAction.mli gUtil.mli gToolbox.mli gBroken.mli \
+        gMenu.mli gMisc.mli gTree.mli gFile.mli gWindow.mli \
+        gEdit.mli gRange.mli gAction.mli gUtil.mli gToolbox.mli \
 	gaux.ml gpointer.mli glib.mli gobject.mli \
         gdkEnums.ml pangoEnums.ml gtkEnums.ml \
         gdk.mli gdkEvent.ml gdkPixbuf.mli \
