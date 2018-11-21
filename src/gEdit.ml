@@ -193,38 +193,6 @@ let combo_box ?model =
     let c = new combo_box (GtkEdit.ComboBox.create pl) in
     GObj.pack_return c ~packing ~show))
 
-class combo_box_entry _obj = object (self)
-  inherit combo_box _obj
-  method text_column = 
-    let model_id = 
-      Gobject.get_oid (Gobject.get GtkEdit.ComboBox.P.model _obj) in
-    let col_list_id = try Hashtbl.find GTree.model_ids model_id 
-                      with Not_found -> 0 in
-    { GTree.index = Gobject.get GtkEdit.ComboBoxEntry.P.text_column _obj ;
-      GTree.conv  = Gobject.Data.string ; 
-      GTree.creator = col_list_id }
-  method set_text_column (col : string GTree.column) =
-    let model_id = 
-      Gobject.get_oid (Gobject.get GtkEdit.ComboBox.P.model _obj) in
-    begin try
-      if Hashtbl.find GTree.model_ids model_id <> col.GTree.creator 
-      then invalid_arg "combo_box_entry#set_text_column: bad column"
-    with Not_found -> () 
-    end ;
-    Gobject.set GtkEdit.ComboBoxEntry.P.text_column obj col.GTree.index
-  method entry = new entry (GtkEdit.Entry.cast self#child#as_widget)
-end
-
-let combo_box_entry ?model ?text_column =
-  let model = Gaux.may_map (fun m -> m#as_model) model in
-  GtkEdit.ComboBox.make_params ?model
-    (Gobject.Property.may_cons GtkEdit.ComboBoxEntry.P.text_column
-       (Gaux.may_map (fun c -> c.GTree.index) text_column) []) ~cont:(
-  GtkBase.Widget.size_params ~cont:(fun pl ?packing ?show () ->
-    GObj.pack_return
-      (new combo_box_entry (GtkEdit.ComboBoxEntry.create pl))
-      ~packing ~show ))
-
 type 'a text_combo = 'a * (GTree.list_store * string GTree.column) 
   constraint 'a = #combo_box
 
@@ -246,13 +214,4 @@ let combo_box_text ?(strings=[]) ?(use_markup=false) =
     let r = GTree.cell_renderer_text [] in
     combo#pack r ; 
     combo#add_attribute r (if use_markup then "markup" else "text") column ;
-    GObj.pack_return combo ~packing ~show, model))
-
-let combo_box_entry_text ?(strings=[]) =
-  let (store, column) as model = GTree.store_of_list Gobject.Data.string strings in
-  GtkEdit.ComboBox.make_params ~model:store#as_model 
-    [ Gobject.param GtkEdit.ComboBoxEntry.P.text_column column.GTree.index ] 
-    ~cont:(
-  GtkBase.Widget.size_params ~cont:(fun pl ?packing ?show () ->
-    let combo = new combo_box_entry (GtkEdit.ComboBoxEntry.create pl) in
     GObj.pack_return combo ~packing ~show, model))

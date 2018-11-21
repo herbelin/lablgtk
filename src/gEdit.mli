@@ -349,34 +349,6 @@ val combo_box :
   ?show:bool ->
   unit -> combo_box
 
-(** @since GTK 2.4
-    @gtkdoc gtk GtkComboBoxEntry *)
-class combo_box_entry : 
-  ([> Gtk.combo_box_entry] as 'a) Gtk.obj ->
-    object
-      inherit combo_box
-      val obj : 'a Gtk.obj
-      method text_column : string GTree.column
-      method set_text_column : string GTree.column -> unit
-      method entry : entry
-    end
-
-(** @since GTK 2.4
-    @gtkdoc gtk GtkComboBoxEntry *)
-val combo_box_entry :
-  ?model:#GTree.model ->
-  ?text_column:string GTree.column ->
-  ?active:int ->
-  ?add_tearoffs:bool ->
-  ?focus_on_click:bool ->
-  ?has_frame:bool ->
-  ?wrap_width:int ->
-  ?width:int ->
-  ?height:int ->
-  ?packing:(GObj.widget -> unit) ->
-  ?show:bool ->
-  unit -> combo_box_entry
-
 (** {4 Convenience API for text-only ComboBoxes} *)
 
 type 'a text_combo = 'a * (GTree.list_store * string GTree.column)
@@ -404,19 +376,3 @@ val combo_box_text :
   ?packing:(GObj.widget -> unit) ->
   ?show:bool ->
   unit -> combo_box text_combo
-
-(** A convenience function. See {!GEdit.combo_box_text}
-    @since GTK 2.4
-    @gtkdoc gtk GtkComboBoxEntry *)
-val combo_box_entry_text :
-  ?strings:string list ->
-  ?active:int ->
-  ?add_tearoffs:bool ->
-  ?focus_on_click:bool ->
-  ?has_frame:bool ->
-  ?wrap_width:int ->
-  ?width:int ->
-  ?height:int ->
-  ?packing:(GObj.widget -> unit) ->
-  ?show:bool ->
-  unit -> combo_box_entry text_combo

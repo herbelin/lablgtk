@@ -46,7 +46,6 @@ CAMLprim value ml_gtkedit_init(value unit)
     GType t =
         gtk_spin_button_get_type() +
         gtk_combo_box_get_type() +
-        gtk_combo_box_entry_get_type() +
         gtk_combo_box_text_get_type() +
         gtk_entry_completion_get_type();
     return Val_GType(t);

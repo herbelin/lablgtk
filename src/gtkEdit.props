@@ -140,10 +140,6 @@ class ComboBox set wrap wrapsig : Bin {
   method set_row_separator_func : "(Gtk.tree_model -> Gtk.tree_iter -> bool) option -> unit" (* GTK+ 2.6 *)
 }
 
-class ComboBoxEntry set : ComboBox {
-  "text-column"          gint                 : Read / Write / NoSet
-}
-
 class ComboBoxText set : ComboBox {
 }
 
