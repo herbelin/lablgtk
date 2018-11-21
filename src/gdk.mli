@@ -129,7 +129,7 @@ module Tags : sig
   type xdata_ret = [ xdata | `NONE ]
 
   (* gdkproperty.h *)
-  type property_mode = "GDK_PROP_MODE_"
+  type property_mode =
     [ `REPLACE | `PREPEND | `APPEND ]
 
   (* gdkwindow.h *)
