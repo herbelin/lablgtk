@@ -543,10 +543,6 @@ module Cursor = struct
     | `XTERM
   ]
   external create : cursor_type -> cursor = "ml_gdk_cursor_new"
-  external create_from_pixmap :
-    pixmap -> mask:bitmap ->
-    fg:color -> bg:color -> x:int -> y:int -> cursor
-    = "ml_gdk_cursor_new_from_pixmap_bc" "ml_gdk_cursor_new_from_pixmap"
   external create_from_pixbuf :
     [`pixbuf] obj -> x:int -> y:int -> cursor
     = "ml_gdk_cursor_new_from_pixbuf" (** @since GTK 2.4 *)
