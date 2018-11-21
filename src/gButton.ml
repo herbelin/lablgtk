@@ -138,72 +138,32 @@ end
 
 class toolbar obj = object
   inherit container (obj : Gtk.toolbar obj)
+  inherit toolbar_props
+  inherit OgtkBaseProps.orientable_props
   method connect = new toolbar_signals obj
-  method insert_widget ?tooltip ?tooltip_private ?pos w =
-    Toolbar.insert_widget obj (as_widget w) ?tooltip ?tooltip_private ?pos
-
-  method insert_button ?text ?tooltip ?tooltip_private ?icon
-      ?pos ?callback () =
-    let icon = may_map icon ~f:as_widget in
-    new button
-      (Toolbar.insert_button obj ~kind:`BUTTON ?icon ?text
-	 ?tooltip ?tooltip_private ?pos ?callback ())
-
-  method insert_toggle_button ?text ?tooltip ?tooltip_private ?icon
-      ?pos ?callback () =
-    let icon = may_map icon ~f:as_widget in
-    new toggle_button
-      (ToggleButton.cast
-	 (Toolbar.insert_button obj ~kind:`TOGGLEBUTTON ?icon ?text
-	    ?tooltip ?tooltip_private ?pos ?callback ()))
-
-  method insert_radio_button ?text ?tooltip ?tooltip_private ?icon
-      ?pos ?callback () =
-    let icon = may_map icon ~f:as_widget in
-    new radio_button
-      (RadioButton.cast
-	 (Toolbar.insert_button obj ~kind:`RADIOBUTTON ?icon ?text
-	    ?tooltip ?tooltip_private ?pos ?callback ()))
-
-  method insert_space = Toolbar.insert_space obj
-
-  method orientation = get Toolbar.P.orientation obj
-  method set_orientation = set Toolbar.P.orientation obj
-  method style = get Toolbar.P.toolbar_style obj
-  method set_style = set Toolbar.P.toolbar_style obj
-  method unset_style () = Toolbar.unset_style obj
-  method get_tooltips = Toolbar.get_tooltips obj
-  method set_tooltips = Toolbar.set_tooltips obj
-  method icon_size = Toolbar.get_icon_size obj
-  method set_icon_size = Toolbar.set_icon_size obj
-  method unset_icon_size () = Toolbar.unset_icon_size obj
-
-  (* extended API in GTK 2.4 *)      
-  method show_arrow = get Toolbar.P.show_arrow obj
-  method set_show_arrow = set Toolbar.P.show_arrow obj
-  method insert : 'a. ?pos:int -> (#tool_item_o as 'a) -> unit =
-    fun ?(pos= -1) i -> Toolbar.insert obj i#as_tool_item ~pos
-  method get_item_index : 'a. (#tool_item_o as 'a) -> int =
-    fun i -> Toolbar.get_item_index obj i#as_tool_item
+  method insert ?(pos = -1) (it : Gtk.tool_item obj) = Toolbar.insert obj it pos
+  method get_item_index : Gtk.tool_item obj -> _ = Toolbar.get_item_index obj
   method get_n_items = Toolbar.get_n_items obj
   method get_nth_item = Toolbar.get_nth_item obj
+  method unset_style = Toolbar.unset_style obj
   method get_drop_index = Toolbar.get_drop_index obj
-  method set_drop_highlight_item : 'a. ((#tool_item_o as 'a) * int) option -> unit = 
+  method set_drop_highlight_item =
     function 
       | None -> Toolbar.set_drop_highlight_item obj None 0
-      | Some (i, pos) -> Toolbar.set_drop_highlight_item obj (Some i#as_tool_item) pos
+      | Some ((i : Gtk.tool_item obj), pos) ->
+          Toolbar.set_drop_highlight_item obj (Some i) pos
   method relief_style = Toolbar.get_relief_style obj
 end
 
-let toolbar ?orientation ?style ?tooltips =
-  pack_container [] ~create:(fun p ->
-    let w = Toolbar.create p in
-    Toolbar.set w ?orientation ?style ?tooltips;
-    new toolbar w)
-
-
-(* New extended API in GTK 2.4 *)
 let may_cons = Gobject.Property.may_cons
+
+let toolbar ?orientation ?style =
+  pack_container [] ~create:(fun p ->
+    let p =
+      may_cons Toolbar.P.toolbar_style style (
+      may_cons GtkBase.Orientable.P.orientation orientation p)
+    in
+    new toolbar (Toolbar.create p))
 
 class tool_item_skel obj = object
   inherit [[> Gtk.tool_item]] GContainer.bin_impl obj
