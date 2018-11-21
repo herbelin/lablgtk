@@ -16,7 +16,6 @@ open GtkEditProps
 }
 
 conversions {
-  GtkEntryIconPosition "GtkEnums.entry_icon_position_conv"
   GtkStock "GtkStock.conv"  
 }
 
