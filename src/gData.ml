@@ -31,7 +31,7 @@ open GObj
 open OgtkBaseProps
 
 class adjustment_signals obj = object (self)
-  inherit gtkobj_signals_impl obj
+  inherit [_] gobject_signals obj
   inherit adjustment_sigs
 end
 
