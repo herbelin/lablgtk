@@ -297,8 +297,6 @@ module Orientable = Orientable
 
 module Bin = Bin
 
-module Item = Item
-
 (* Clipboard provides high-level access to Selection *)
 module Clipboard = struct
   external get : Gdk.atom -> clipboard = "ml_gtk_clipboard_get"
