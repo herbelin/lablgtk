@@ -176,26 +176,17 @@ let arrow =
 class image obj = object (self)
   inherit misc obj
   inherit image_props
-  method pixmap = new GDraw.pixmap (get Image.P.pixmap obj) ?mask:self#mask
-  method set_pixmap (p : GDraw.pixmap) =
-    set Image.P.pixmap obj p#pixmap;
-    self#set_mask p#mask
   method clear () = Image.clear obj
 end
 
 type image_type =
-  [ `EMPTY | `PIXMAP | `IMAGE | `PIXBUF | `STOCK | `ICON_SET | `ANIMATION
-  | `ICON_NAME | `GICON ]
+  [ `EMPTY | `PIXBUF | `STOCK | `ICON_SET | `ANIMATION | `ICON_NAME | `GICON
+  | `SURFACE ]
 
 let image =
   Image.make_params [] ~cont:(
   Misc.all_params ~cont:(fun p ?packing ?show () ->
     pack_return (new image (Image.create p)) ~packing ~show))
-
-let pixmap pm =
-  let pl = [param Image.P.pixmap pm#pixmap; param Image.P.mask pm#mask] in
-  Misc.all_params pl ~cont:(fun pl ?packing ?show () ->
-    pack_return (new image (Image.create pl)) ~packing ~show)
 
 class label_skel obj = object(self)
   inherit misc obj
