@@ -71,9 +71,7 @@ CAMLprim value ml_gtkwindow_init(value unit)
     /* Since these are declared const, must force gcc to call them! */
     GType t =
         gtk_message_dialog_get_type() +
-        gtk_input_dialog_get_type() +
         gtk_color_selection_dialog_get_type() +
-        gtk_file_selection_get_type() +
         gtk_font_selection_dialog_get_type() 
 #ifndef _WIN32
         + gtk_plug_get_type()
