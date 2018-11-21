@@ -103,24 +103,14 @@ ML_bc6 (ml_gtk_box_set_child_packing)
 /* gtkbbox.h */
     
 #define GtkButtonBox_val(val) check_cast(GTK_BUTTON_BOX,val)
-Make_Extractor (gtk_button_box_get, GtkButtonBox_val, child_min_width, Val_int)
-Make_Extractor (gtk_button_box_get, GtkButtonBox_val, child_min_height,
-		Val_int)
-Make_Extractor (gtk_button_box_get, GtkButtonBox_val, child_ipad_x, Val_int)
-Make_Extractor (gtk_button_box_get, GtkButtonBox_val, child_ipad_y, Val_int)
-Make_Extractor (gtk_button_box_get, GtkButtonBox_val, layout_style,
-		Val_button_box_style)
-ML_3 (gtk_button_box_set_child_size, GtkButtonBox_val,
-      Int_val, Int_val, Unit)
-ML_3 (gtk_button_box_set_child_ipadding, GtkButtonBox_val,
-      Int_val, Int_val, Unit)
-#ifdef HASGTK24
-ML_2 (gtk_button_box_get_child_secondary, GtkButtonBox_val, GtkWidget_val, Val_bool)
-ML_3 (gtk_button_box_set_child_secondary, GtkButtonBox_val, GtkWidget_val, Bool_val, Unit)
-#else
-Unsupported_24 (gtk_button_box_get_child_secondary)
-Unsupported_24 (gtk_button_box_set_child_secondary)
-#endif
+ML_2 (gtk_button_box_get_child_secondary, GtkButtonBox_val, GtkWidget_val,
+      Val_bool)
+ML_3 (gtk_button_box_set_child_secondary, GtkButtonBox_val, GtkWidget_val,
+      Bool_val, Unit)
+ML_2 (gtk_button_box_get_child_non_homogeneous, GtkButtonBox_val, GtkWidget_val,
+      Val_bool)
+ML_3 (gtk_button_box_set_child_non_homogeneous, GtkButtonBox_val, GtkWidget_val,
+      Bool_val, Unit)
 
 /* gtkfixed.h */
 
@@ -136,9 +126,10 @@ ML_1 (gtk_fixed_get_has_window, GtkFixed_val, Val_bool) */
 #define GtkLayout_val(val) check_cast(GTK_LAYOUT,val)
 ML_4 (gtk_layout_put, GtkLayout_val, GtkWidget_val, Int_val, Int_val, Unit)
 ML_4 (gtk_layout_move, GtkLayout_val, GtkWidget_val, Int_val, Int_val, Unit)
+ML_1 (gtk_layout_get_bin_window, GtkLayout_val, Val_GdkWindow)
+/* not in 3
 ML_1 (gtk_layout_freeze, GtkLayout_val, Unit)
-ML_1 (gtk_layout_thaw, GtkLayout_val, Unit)
-Make_Extractor(gtk_layout, GtkLayout_val, bin_window, Val_GdkWindow)
+ML_1 (gtk_layout_thaw, GtkLayout_val, Unit) */
 
 /* gtknotebook.h */
 
@@ -188,11 +179,10 @@ ML_2 (gtk_paned_add1, GtkPaned_val, GtkWidget_val, Unit)
 ML_2 (gtk_paned_add2, GtkPaned_val, GtkWidget_val, Unit)
 ML_4 (gtk_paned_pack1, GtkPaned_val, GtkWidget_val, Int_val, Int_val, Unit)
 ML_4 (gtk_paned_pack2, GtkPaned_val, GtkWidget_val, Int_val, Int_val, Unit)
-Make_Extractor (gtk_paned, GtkPaned_val, child1, Val_GtkWidget)
-Make_Extractor (gtk_paned, GtkPaned_val, child2, Val_GtkWidget)
+ML_1 (gtk_paned_get_child1, GtkPaned_val, Val_GtkWidget)
+ML_1 (gtk_paned_get_child2, GtkPaned_val, Val_GtkWidget)
 
 /* gtktable.h */
-
 #define GtkTable_val(val) check_cast(GTK_TABLE,val)
 ML_10 (gtk_table_attach, GtkTable_val, GtkWidget_val,
        Int_val, Int_val, Int_val, Int_val,

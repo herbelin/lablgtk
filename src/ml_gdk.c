@@ -417,13 +417,14 @@ CAMLprim value ml_gdk_property_get (value window, value property,
 ML_2 (gdk_property_delete, GdkWindow_val, GdkAtom_val, Unit)
 
 /* RGB */
-
+/* not in 3
 ML_0 (gdk_rgb_init, Unit)
 ML_0 (gdk_rgb_get_visual, Val_GdkVisual)
 ML_0 (gdk_rgb_get_cmap, Val_GdkColormap)
 ML_9 (gdk_draw_rgb_image, GdkDrawable_val, GdkGC_val, Int_val, Int_val,
       Int_val, Int_val, GdkRgbDither_val, ml_gpointer_base, Int_val, Unit)
 ML_bc9 (ml_gdk_draw_rgb_image)
+*/
 
 /* Events */
 
@@ -460,8 +461,8 @@ Make_Setter (gdk_event_set, GdkEvent_arg(Any), Event_type_val, type)
 Make_Setter (gdk_event_set, GdkEvent_arg(Any), GdkWindow_val, window)
 
 Make_Extractor (GdkEventExpose, GdkEvent_arg(Expose), area, Val_copy)
-Make_Extractor (GdkEventExpose, GdkEvent_arg(Expose), region,
-                Val_GdkRegion_copy)
+/* Make_Extractor (GdkEventExpose, GdkEvent_arg(Expose), region,
+                Val_GdkRegion_copy) */
 Make_Extractor (GdkEventExpose, GdkEvent_arg(Expose), count, Val_int)
 
 Make_Extractor (GdkEventVisibility, GdkEvent_arg(Visibility), state,
@@ -547,7 +548,7 @@ Make_Extractor (GdkEventSelection, GdkEvent_arg(Selection), target,
 Make_Extractor (GdkEventSelection, GdkEvent_arg(Selection), property,
                 Val_GdkAtom)
 Make_Extractor (GdkEventSelection, GdkEvent_arg(Selection), requestor,
-                Val_GdkNativeWindow)
+                Val_GdkWindow)
 
 Make_Extractor (GdkEventProximity, GdkEvent_arg(Proximity),
                 device, Val_GdkDevice)
@@ -574,7 +575,8 @@ static value val_int(gpointer i)
 }
 CAMLprim value ml_GdkDragContext_targets (value c)
 {
-  return Val_GList (gdk_drag_context_get_targets(c), val_int);
+  return Val_GList (gdk_drag_context_list_targets(GdkDragContext_val(c)),
+                    val_int);
 }
 
 /* Misc */
