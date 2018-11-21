@@ -114,7 +114,7 @@ ML_2 (gtk_calendar_mark_day, GtkCalendar_val, Int_val, Unit)
 ML_2 (gtk_calendar_unmark_day, GtkCalendar_val, Int_val, Unit)
 ML_1 (gtk_calendar_clear_marks, GtkCalendar_val, Unit)
 Make_Flags_val (Calendar_display_options_val)
-ML_2 (gtk_calendar_display_options, GtkCalendar_val,
+ML_2 (gtk_calendar_set_display_options, GtkCalendar_val,
       Flags_Calendar_display_options_val, Unit)
 CAMLprim value ml_gtk_calendar_get_date (value w)
 {
@@ -128,15 +128,11 @@ CAMLprim value ml_gtk_calendar_get_date (value w)
     Field(ret,2) = Val_int(day);
     return ret;
 }
+/* not in 3
 ML_1 (gtk_calendar_freeze, GtkCalendar_val, Unit)
 ML_1 (gtk_calendar_thaw, GtkCalendar_val, Unit)
-Make_Extractor (gtk_calendar_get, GtkCalendar_val, num_marked_dates, Val_int)
-CAMLprim value ml_gtk_calendar_is_day_marked (value c, value d)
-{
-  guint day = Int_val(d) - 1;
-  if (day >= 31) invalid_argument("gtk_calendar_is_day_marked: date ouf of range");
-  return Val_bool(GtkCalendar_val(c)->marked_date[day]);
-}
+Make_Extractor (gtk_calendar_get, GtkCalendar_val, num_marked_dates, Val_int) */
+ML_2 (gtk_calendar_get_day_is_marked, GtkCalendar_val, Int_val, Val_bool)
 
 /* gtkdrawingarea.h */
 

@@ -130,18 +130,15 @@ class calendar obj = object
   method select_day = Calendar.select_day obj
   method mark_day = Calendar.mark_day obj
   method unmark_day = Calendar.unmark_day obj
+  method day_is_marked = Calendar.get_day_is_marked obj
   method clear_marks = Calendar.clear_marks obj
-  method display_options = Calendar.display_options obj
   method date = Calendar.get_date obj
-  method freeze () = Calendar.freeze obj
-  method thaw () = Calendar.thaw obj
-  method num_marked_dates = Calendar.get_num_marked_dates obj
-  method is_day_marked = Calendar.is_day_marked obj
-end
+  method set_display_options = Calendar.set_display_options obj
+ end
 
 let calendar ?options ?packing ?show () =
   let w = Calendar.create [] in
-  may options ~f:(Calendar.display_options w);
+  may options ~f:(Calendar.set_display_options w);
   pack_return (new calendar w) ~packing ~show
 
 class drawing_area obj = object

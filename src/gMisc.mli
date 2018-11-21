@@ -149,15 +149,12 @@ class calendar : Gtk.calendar obj ->
     method clear_marks : unit
     method connect : calendar_signals
     method date : int * int * int
-    method display_options : Tags.calendar_display_options list -> unit
-    method freeze : unit -> unit
     method mark_day : int -> unit
     method select_day : int -> unit
     method select_month : month:int -> year:int -> unit
-    method thaw : unit -> unit
     method unmark_day : int -> unit
-    method is_day_marked : int -> bool
-    method num_marked_dates : int
+    method day_is_marked : int -> bool
+    method set_display_options : Tags.calendar_display_options list -> unit
   end
 
 (** @gtkdoc gtk GtkCalendar *)
