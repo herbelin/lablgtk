@@ -21,7 +21,6 @@ open GtkBaseProps
 conversions {
   GtkAllocation "Internal.allocation"
   GtkSelectionData_nocopy "(unsafe_pointer : Gtk.selection_data data_conv)"
-  GdkGravity "GdkEnums.gravity_conv"
 }
 
 boxed {
