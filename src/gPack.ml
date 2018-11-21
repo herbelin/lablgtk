@@ -154,6 +154,16 @@ let packer ?spacing ?border_width ?width ?height ?packing ?show () =
   pack_return (new packer w) ~packing ~show
 *)
 
+let check1 obj =
+  try ignore(Paned.get_child1 obj);
+    raise(Error "GPack.paned#add1: already full")
+  with _ -> ()
+
+let check2 obj =
+  try ignore(Paned.get_child1 obj);
+    raise(Error "GPack.paned#add1: already full")
+  with _ -> ()
+
 class paned obj = object
   inherit [Gtk.paned] container_impl obj
   inherit paned_props
@@ -163,22 +173,12 @@ class paned obj = object
     if List.length (Container.children obj) = 2 then
       raise(Error "Gpack.paned#add: already full");
     Container.add obj (as_widget w)
-  method add1 w =
-    try ignore(Paned.child1 obj); raise(Error "GPack.paned#add1: already full")
-    with _ -> Paned.add1 obj (as_widget w)
-  method add2 w =
-    try ignore(Paned.child2 obj); raise(Error "GPack.paned#add2: already full")
-    with _ -> Paned.add2 obj (as_widget w)
+  method add1 w = check1 obj; Paned.add1 obj (as_widget w)
+  method add2 w = check2 obj; Paned.add2 obj (as_widget w)
   method pack1 ?(resize=false) ?(shrink=false) w =
-    try ignore(Paned.child1 obj);
-      raise(Error "GPack.paned#pack1: already full")
-    with _ -> Paned.pack1 obj (as_widget w) ~resize ~shrink
+    check1 obj; Paned.pack1 obj (as_widget w) ~resize ~shrink
   method pack2 ?(resize=false) ?(shrink=false) w =
-    try ignore(Paned.child2 obj);
-      raise(Error "GPack.paned#pack2: already full")
-    with _ -> Paned.pack2 obj (as_widget w) ~resize ~shrink
-  method child1 = new widget (Paned.child1 obj)
-  method child2 = new widget (Paned.child2 obj)
+    check2 obj; Paned.pack2 obj (as_widget w) ~resize ~shrink
 end
 
 let paned dir =
