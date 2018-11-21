@@ -71,15 +71,12 @@ conversions {
 
 class Notebook set wrap wrapsig : Container {
   "enable-popup"         gboolean             : Read / Write
-  "homogeneous"(homogeneous_tabs) gboolean    : Read / Write
+  "group-name"           string               : Read / Write
   "page"                 gint                 : Read / Write / NoSet / NoWrap
   "scrollable"           gboolean             : Read / Write
   "show-border"          gboolean             : Read / Write
   "show-tabs"            gboolean             : Read / Write
-  "tab-border"           guint                : Write
-  "tab-hborder"          guint                : Read / Write / NoSet
   "tab-pos"              GtkPositionType      : Read / Write
-  "tab-vborder"          guint                : Read / Write / NoSet
   method insert_page_menu :
      "[>`widget] obj -> tab_label:[>`widget] optobj ->
       menu_label:[>`widget] optobj -> ?pos:int -> int"
