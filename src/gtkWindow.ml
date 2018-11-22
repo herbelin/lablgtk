@@ -97,15 +97,15 @@ module Dialog = struct
       = "ml_gtk_dialog_set_default_response"
   external run : [>`dialog] obj -> int
       = "ml_gtk_dialog_run"
-  let std_response = Gpointer.encode_variant GtkEnums.response
-  let decode_response = Gpointer.decode_variant GtkEnums.response
+  let std_response = Gpointer.encode_variant GtkEnums.Conv.response_tbl
+  let decode_response = Gpointer.decode_variant GtkEnums.Conv.response_tbl
 end
 
 module MessageDialog = struct
   include MessageDialog
   external create :
       ?parent:[>`window] obj -> message_type:Gtk.Tags.message_type ->
-      buttons:Gtk.Tags.buttons -> message:string -> unit -> message_dialog obj
+      buttons:Gtk.Tags.buttons_type -> string -> message_dialog obj
       = "ml_gtk_message_dialog_new"
   external set_markup : [>`messagedialog] obj -> string -> unit = "ml_gtk_message_dialog_set_markup"
 end
