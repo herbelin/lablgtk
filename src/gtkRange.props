@@ -28,6 +28,7 @@ class Range abstract set wrap wrapsig : Widget {
 class Scale hv set wrap : Range {
   "digits"               gint                 : Read / Write
   "draw-value"           gboolean             : Read / Write
+  "has-origin"           gboolean             :	Read / Write
   "value-pos"            GtkPositionType      : Read / Write
   signal format_value : gdouble -> string
 }
