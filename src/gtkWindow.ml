@@ -93,13 +93,7 @@ module Dialog = struct
   let decode_response = Gpointer.decode_variant GtkEnums.Conv.response_tbl
 end
 
-module MessageDialog = struct
-  include MessageDialog
-  external create :
-      ?parent:[>`window] obj -> message_type:Gtk.Tags.message_type ->
-      buttons:Gtk.Tags.buttons_type -> string -> message_dialog obj
-      = "ml_gtk_message_dialog_new"
-end
+module MessageDialog = MessageDialog
 
 module AboutDialog = struct
   include AboutDialog
