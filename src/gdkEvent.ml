@@ -191,14 +191,6 @@ module Proximity = struct
   external device : t -> device = "ml_GdkEventProximity_device"
 end
 
-module Client = struct
-  type t = [ `CLIENT_EVENT ] event
-  let cast ev : t = cast ev ~kind:[`CLIENT_EVENT]
-  external window : t -> window = "ml_GdkEventClient_window"
-  external message_type : t -> atom = "ml_GdkEventClient_message_type"
-  external data : t -> xdata_ret = "ml_GdkEventClient_data"
-end
-
 module Setting = struct
   type t = [ `SETTING ] event
   let cast ev : t = cast ev ~kind:[`SETTING]
