@@ -352,6 +352,8 @@ val label_cast : < as_widget : 'a obj ; .. > -> label
 
 (** {3 Color and font selection} *)
 
+(** Deprecated since 3.0 *)
+
 (** A widget used to select a color
     @gtkdoc gtk GtkColorSelection *)
 class color_selection : Gtk.color_selection obj ->
