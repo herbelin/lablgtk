@@ -137,8 +137,6 @@ ML_2 (gtk_calendar_get_day_is_marked, GtkCalendar_val, Int_val, Val_bool)
 /* gtkdrawingarea.h */
 
 #define GtkDrawingArea_val(val) check_cast(GTK_DRAWING_AREA,val)
-ML_3 (gtk_drawing_area_size, GtkDrawingArea_val, Int_val, Int_val, Unit)
-
 /* gtkmisc.h */
 
 /* gtkarrow.h */

@@ -171,13 +171,10 @@ class drawing_area : ([> Gtk.drawing_area] as 'a) obj ->
     inherit GObj.widget_full
     val obj : 'a obj
     method event : event_ops
-    method set_size : width:int -> height:int -> unit
   end
 
 (** @gtkdoc gtk GtkDrawingArea *)
 val drawing_area :
-  ?width:int ->
-  ?height:int ->
   ?packing:(widget -> unit) -> ?show:bool -> unit -> drawing_area
 
 (** {3 Misc. Widgets} *)

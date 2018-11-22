@@ -144,15 +144,10 @@ let calendar ?options ?packing ?show () =
 class drawing_area obj = object
   inherit widget_full (obj : [> Gtk.drawing_area] obj)
   method event = new GObj.event_ops obj
-  method set_size = DrawingArea.size obj
 end
 
-let may_set_size ?(width=0) ?(height=0) w =
-  if width <> 0 || height <> 0 then DrawingArea.size w ~width ~height
-
-let drawing_area ?width ?height ?packing ?show () =
+let drawing_area ?packing ?show () =
   let w = DrawingArea.create [] in
-  may_set_size w ?width ?height;
   pack_return (new drawing_area w) ~packing ~show
 
 class misc obj = object

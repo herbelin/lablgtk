@@ -162,7 +162,6 @@ class Calendar wrap wrapsig : Widget {
 }
 
 class DrawingArea : Widget {
-  method size : "width:int -> height:int -> unit"
 }
 
 class Separator hv : Widget {}
