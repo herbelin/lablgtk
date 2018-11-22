@@ -317,13 +317,13 @@ end
 (* Use of Selection is deprecated: rather use simpler Clipboard module *)
 module Selection = struct
   external selection : selection_data -> Gdk.atom
-      = "ml_gtk_selection_data_selection"
+      = "ml_gtk_selection_data_get_selection"
   external target : selection_data -> Gdk.atom
-      = "ml_gtk_selection_data_target"
+      = "ml_gtk_selection_data_get_target"
   external seltype : selection_data -> Gdk.atom
-      = "ml_gtk_selection_data_type"
+      = "ml_gtk_selection_data_get_data_type"
   external format : selection_data -> int
-      = "ml_gtk_selection_data_format"
+      = "ml_gtk_selection_data_get_format"
   external get_data : selection_data -> string
       = "ml_gtk_selection_data_get_data"       (* May raise Gpointer.null *)
   external set :
