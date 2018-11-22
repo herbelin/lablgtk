@@ -180,6 +180,7 @@ CAMLprim value ml_GdkColor (value red, value green, value blue)
     return Val_copy(color);
 }
 
+/* Deprecated: 3.14: Use #GdkRGBA */
 Make_Extractor (GdkColor, GdkColor_val, red, Val_int)
 Make_Extractor (GdkColor, GdkColor_val, green, Val_int)
 Make_Extractor (GdkColor, GdkColor_val, blue, Val_int)
