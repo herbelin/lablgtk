@@ -88,24 +88,26 @@ class TextMark : GObject {
 class TextTag vset : GObject {
   "accumulative-margin"  gboolean             : Read / Write
   "background"           gchararray           : Write
-  "background-full-height" gboolean             : Read / Write
-  "background-full-height-set" gboolean             : Read / Write
+  "background-full-height" gboolean           : Read / Write
+  "background-full-height-set" gboolean       : Read / Write
   "background-gdk"       GdkColor             : Read / Write
+  "background-rgba"      GdkRGBA              : Read / Write
   "background-set"       gboolean             : Read / Write
-  "background-stipple"   GdkBitmap            : Read / Write
-  "background-stipple-set" gboolean           : Read / Write
   "direction"            GtkTextDirection     : Read / Write
   "editable"             gboolean             : Read / Write
   "editable-set"         gboolean             : Read / Write
+  "fallback"             gboolean             : Read / Write
+  "fallback-set"         gboolean             : Read / Write
   "family"               gchararray           : Read / Write
   "family-set"           gboolean             : Read / Write
   "font"                 gchararray           : Read / Write
   "font-desc"            PangoFontDescription : Read / Write
+  "font-features"        gchararray           : Read / Write
+  "font-features-set"    gboolean             : Read / Write
   "foreground"           gchararray           : Write
   "foreground-gdk"       GdkColor             : Read / Write
+  "foreground-rgba"      GdkRGBA              : Read / Write
   "foreground-set"       gboolean             : Read / Write
-  "foreground-stipple"   GdkBitmap            : Read / Write
-  "foreground-stipple-set" gboolean           : Read / Write
   "indent"               gint                 : Read / Write
   "indent-set"           gboolean             : Read / Write
   "invisible"            gboolean             : Read / Write
@@ -116,9 +118,12 @@ class TextTag vset : GObject {
   "language-set"         gboolean             : Read / Write
   "left-margin"          gint                 : Read / Write
   "left-margin-set"      gboolean             : Read / Write
+  "letter-spacing"       gint                 : Read / Write
+  "letter-spacing-set"   gboolean             : Read / Write
   "name"                 gchararray           : Read / Write / Construct Only
   "paragraph-background" gchararray           : Write
   "paragraph-background-gdk"        GdkColor  : Read / Write
+  "paragraph-background-rgba"       GdkRGBA   : Read / Write
   "paragraph-background-set"        gboolean  : Read / Write
   "pixels-above-lines"   gint                 : Read / Write
   "pixels-above-lines-set" gboolean           : Read / Write
@@ -138,12 +143,15 @@ class TextTag vset : GObject {
   "stretch"              PangoStretch         : Read / Write
   "stretch-set"          gboolean             : Read / Write
   "strikethrough"        gboolean             : Read / Write
+  "strikethrough-rgba"   GdkRGBA              : Read / Write
   "strikethrough-set"    gboolean             : Read / Write
   "style"                PangoStyle           : Read / Write
   "style-set"            gboolean             : Read / Write
   "tabs"                 PangoTabArray        : Read / Write
   "tabs-set"             gboolean             : Read / Write
   "underline"            PangoUnderline       : Read / Write
+  "underline-rgba"       GdkRGBA              : Read / Write
+  "underline-rgba-set"   gboolean             : Read / Write
   "underline-set"        gboolean             : Read / Write
   "variant"              PangoVariant         : Read / Write
   "variant-set"          gboolean             : Read / Write
