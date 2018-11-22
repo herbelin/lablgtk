@@ -29,7 +29,7 @@ type icon_size = "GTK_ICON_SIZE_"
   [ `INVALID | `MENU | `SMALL_TOOLBAR | `LARGE_TOOLBAR
   | `BUTTON | `DND | `DIALOG ]
 
-type gtk_sensitivity_type = "GTK_SENSITIVITY_"
+type sensitivity_type = "GTK_SENSITIVITY_"
   [ `AUTO | `ON | `OFF ]
 
 type text_direction = "GTK_TEXT_DIR_"
