@@ -121,6 +121,7 @@ class entry_signals : [> Gtk.entry] obj ->
     method notify_max_length : callback:(int -> unit) -> GtkSignal.id
     method notify_scroll_offset : callback:(int -> unit) -> GtkSignal.id
     method notify_text : callback:(string -> unit) -> GtkSignal.id
+    method notify_text_length : callback:(int -> unit) -> GtkSignal.id
     method notify_visibility : callback:(bool -> unit) -> GtkSignal.id
     method notify_width_chars : callback:(int -> unit) -> GtkSignal.id
     method notify_xalign : callback:(float -> unit) -> GtkSignal.id
