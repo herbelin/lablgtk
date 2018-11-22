@@ -31,16 +31,6 @@ open GtkBaseProps
 module Object = struct
   include GtkObject
   let try_cast = Gobject.try_cast
-  external destroy : [>`gtk] obj -> unit = "ml_gtk_object_destroy"
-  external get_flags : [>`gtk] obj -> int = "ml_GTK_OBJECT_FLAGS"
-  let get_flag obj wf =
-    (get_flags obj) land (Gpointer.encode_variant GtkEnums.widget_flags wf)
-      <> 0
-  module S = struct
-    open GtkSignal
-    let destroy =
-      { name = "destroy"; classe = `gtk; marshaller = marshal_unit }
-  end
 end
 
 module Widget = struct
