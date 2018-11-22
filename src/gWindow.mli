@@ -271,10 +271,10 @@ class type ['a] message_dialog =
 
 (** @gtkdoc gtk GtkMessageDialog *)
 val message_dialog :
+  buttons:'a buttons ->
+  ?message_type:Tags.message_type ->
   ?message:string ->
   ?use_markup:bool ->
-  message_type:Tags.message_type ->
-  buttons:'a buttons ->
   ?parent:#window_skel ->
   ?destroy_with_parent:bool ->
   ?title:string ->
