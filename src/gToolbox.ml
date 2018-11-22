@@ -30,8 +30,7 @@ type menu_entry =
   [ `I of string * (unit -> unit)
   | `C of string * bool * (bool -> unit)
   | `R of (string * bool * (bool -> unit)) list
-  | `M of string * menu_entry list
-  | `S ]
+  | `M of string * menu_entry list ]
 
 let rec build_menu menu ~(entries : menu_entry list) =
   let f = new GMenu.factory menu in
@@ -52,8 +51,6 @@ let rec build_menu menu ~(entries : menu_entry list) =
     | `M (label, entries) ->
         let m = f#add_submenu label in
         build_menu m ~entries
-    | `S ->
-        ignore (f#add_separator ())
     end
 
 let popup_menu ~entries =

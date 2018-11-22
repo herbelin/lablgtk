@@ -31,8 +31,7 @@ type menu_entry =
   [ `I of string * (unit -> unit)
   | `C of string * bool * (bool -> unit)
   | `R of (string * bool * (bool -> unit)) list
-  | `M of string * menu_entry list
-  | `S ]
+  | `M of string * menu_entry list ]
 
 (** Build a menu from a tree description *)
 val build_menu : GMenu.menu -> entries: menu_entry list -> unit
