@@ -208,7 +208,7 @@ end
 
 (** MessageDialog **)
 
-type 'a buttons = Gtk.Tags.buttons * (int * 'a) list
+type 'a buttons = Gtk.Tags.buttons_type * (int * 'a) list
 module Buttons = struct
   let ok = `OK, [ rok, `OK ]
   let close = `CLOSE, [ rclose, `CLOSE ]
