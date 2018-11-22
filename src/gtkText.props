@@ -86,6 +86,7 @@ class TextMark : GObject {
 }
 
 class TextTag vset : GObject {
+  "accumulative-margin"  gboolean             : Read / Write
   "background"           gchararray           : Write
   "background-full-height" gboolean             : Read / Write
   "background-full-height-set" gboolean             : Read / Write
@@ -116,6 +117,9 @@ class TextTag vset : GObject {
   "left-margin"          gint                 : Read / Write
   "left-margin-set"      gboolean             : Read / Write
   "name"                 gchararray           : Read / Write / Construct Only
+  "paragraph-background" gchararray           : Write
+  "paragraph-background-gdk"        GdkColor  : Read / Write
+  "paragraph-background-set"        gboolean  : Read / Write
   "pixels-above-lines"   gint                 : Read / Write
   "pixels-above-lines-set" gboolean           : Read / Write
   "pixels-below-lines"   gint                 : Read / Write
