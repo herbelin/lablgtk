@@ -53,25 +53,6 @@ module SpinButton = struct
   let get_value_as_int w = truncate (floor (get P.value w +. 0.5))
 end
 
-
-module Combo = struct
-  include Combo
-  external entry : [>`combo] obj -> entry obj = "ml_gtk_combo_entry"
-  external list : [>`combo] obj -> liste obj = "ml_gtk_combo_list"
-  let set_popdown_strings combo strings =
-    GtkList.Liste.clear_items (list combo) ~start:0 ~stop:(-1);
-    List.iter strings ~f:
-      begin fun s ->
-	let li = GtkList.ListItem.create_with_label s in
-	Widget.show li;
-	Container.add (list combo) li
-      end
-  external disable_activate : [>`combo] obj -> unit
-      = "ml_gtk_combo_disable_activate"
-  external set_item_string : [>`combo] obj -> [>`item] obj -> string -> unit
-      = "ml_gtk_combo_set_item_string"
-end
-
 module ComboBox = GtkEditProps.ComboBox
 
 module ComboBoxText = GtkEditProps.ComboBoxText
