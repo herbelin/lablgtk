@@ -47,8 +47,6 @@ type tag_property = [
   | `BACKGROUND_FULL_HEIGHT_SET of bool
   | `BACKGROUND_GDK of Gdk.color
   | `BACKGROUND_SET of bool
-  | `BACKGROUND_STIPPLE of Gdk.bitmap
-  | `BACKGROUND_STIPPLE_SET of bool
   | `DIRECTION of Tags.text_direction
   | `EDITABLE of bool
   | `EDITABLE_SET of bool
@@ -59,8 +57,6 @@ type tag_property = [
   | `FOREGROUND of string
   | `FOREGROUND_GDK of Gdk.color
   | `FOREGROUND_SET of bool
-  | `FOREGROUND_STIPPLE of Gdk.bitmap
-  | `FOREGROUND_STIPPLE_SET of bool
   | `INDENT of int
   | `INDENT_SET of bool
   | `INVISIBLE of bool
