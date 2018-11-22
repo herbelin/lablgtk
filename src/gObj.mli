@@ -83,7 +83,6 @@ class event_signals : [> widget] obj ->
     method button_press : callback:(GdkEvent.Button.t -> bool) -> GtkSignal.id
     method button_release :
 	callback:(GdkEvent.Button.t -> bool) -> GtkSignal.id
-    method client : callback:(GdkEvent.Client.t -> bool) -> GtkSignal.id
     method configure : callback:(GdkEvent.Configure.t -> bool) -> GtkSignal.id
     method delete : callback:([`DELETE] Gdk.event -> bool) -> GtkSignal.id
     method destroy : callback:([`DESTROY] Gdk.event -> bool) -> GtkSignal.id
@@ -252,7 +251,6 @@ and misc_ops : Gtk.widget obj ->
     method set_size_chars :
       ?desc:Pango.font_description ->
       ?lang:string -> ?width:int -> ?height:int -> unit -> unit
-    method set_state : Tags.state_type -> unit
     method set_style : style -> unit
     method set_size_request : ?width:int -> ?height:int -> unit -> unit
     method set_tooltip_markup : string -> unit
