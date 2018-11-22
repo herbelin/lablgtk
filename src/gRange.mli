@@ -36,20 +36,20 @@ class progress_bar : Gtk.progress_bar obj ->
   object
     inherit GObj.widget_full
     val obj : Gtk.progress_bar Gtk.obj
-    method adjustment : GData.adjustment
     method event : GObj.event_ops
+    method inverted : bool
     method pulse : unit -> unit
-    method set_adjustment : GData.adjustment -> unit
+    method set_inverted : bool -> unit
     method set_fraction : float -> unit
-    method set_orientation : Tags.progress_bar_orientation -> unit
     method set_pulse_step : float -> unit
+    method set_show_text : bool -> unit
     method set_text : string -> unit
+    method show_text : bool
     method fraction : float
-    method orientation : Tags.progress_bar_orientation
     method pulse_step : float
     method text : string
-    method ellipsize : PangoEnums.ellipsize_mode (** @since GTK 2.6 *)
-    method set_ellipsize : PangoEnums.ellipsize_mode -> unit (** @since GTK 2.6 *)
+    method ellipsize : PangoEnums.ellipsize_mode
+    method set_ellipsize : PangoEnums.ellipsize_mode -> unit
   end
 
 (** @gtkdoc gtk GtkProgress
@@ -57,7 +57,6 @@ class progress_bar : Gtk.progress_bar obj ->
     @param orientation default value is [`LEFT_TO_RIGHT]
     @param pulse_step default value is [0.1] *)
 val progress_bar :
-  ?orientation:Tags.progress_bar_orientation ->
   ?pulse_step:float ->
   ?packing:(widget -> unit) -> ?show:bool -> unit -> progress_bar
 
