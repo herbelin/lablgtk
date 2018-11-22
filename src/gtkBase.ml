@@ -368,24 +368,12 @@ module DnD = struct
   external set_icon_widget :
       Gdk.drag_context -> [>`widget] obj -> hot_x:int -> hot_y:int -> unit
       = "ml_gtk_drag_set_icon_widget"
-  external set_icon_pixmap :
-      Gdk.drag_context -> colormap:Gdk.colormap ->
-      Gdk.pixmap -> ?mask:Gdk.bitmap -> hot_x:int -> hot_y:int -> unit
-      = "ml_gtk_drag_set_icon_pixmap_bc" "ml_gtk_drag_set_icon_pixmap"
   external set_icon_default : Gdk.drag_context -> unit
       = "ml_gtk_drag_set_icon_default"
-  external set_default_icon :
-      colormap:Gdk.colormap -> Gdk.pixmap ->
-      ?mask:Gdk.bitmap -> hot_x:int -> hot_y:int -> unit
-      = "ml_gtk_drag_set_default_icon"
   external source_set :
       [>`widget] obj -> ?modi:Gdk.Tags.modifier list ->
       targets:target_entry array -> actions:Gdk.Tags.drag_action list -> unit
       = "ml_gtk_drag_source_set"
-  external source_set_icon :
-      [>`widget] obj -> colormap:Gdk.colormap ->
-      Gdk.pixmap -> ?mask:Gdk.bitmap -> unit
-      = "ml_gtk_drag_source_set_icon"
   external source_unset : [>`widget] obj -> unit
       = "ml_gtk_drag_source_unset"
 (*  external dest_handle_event : [>`widget] -> *)
