@@ -390,30 +390,6 @@ module Window = struct
   external set_transient_for : window -> window -> unit = "ml_gdk_window_set_transient_for"
 end
 
-module PointArray = struct
-  type t = { len: int}
-  external create : len:int -> t = "ml_point_array_new"
-  external set : t -> pos:int -> x:int -> y:int -> unit = "ml_point_array_set"
-  let set arr ~pos =
-    if pos < 0 || pos >= arr.len then invalid_arg "PointArray.set";
-    set arr ~pos
-end
-
-module SegmentArray = struct
-  type t = { len: int}
-  external create : len:int -> t = "ml_segment_array_new"
-  external set : t -> pos:int -> x1:int -> y1:int -> x2:int -> y2: int -> unit = "ml_segment_array_set_bc" "ml_segment_array_set"
-  let set arr ~pos =
-    if pos < 0 || pos >= arr.len then invalid_arg "SegmentArray.set";
-    set arr ~pos
-end
-
-module Rgb = struct
-  external init : unit -> unit = "ml_gdk_rgb_init"
-  external get_visual : unit -> visual = "ml_gdk_rgb_get_visual"
-  external get_cmap : unit -> colormap = "ml_gdk_rgb_get_cmap"
-end
-
 module DnD = struct
   external drag_status : drag_context -> drag_action option -> time:int32 -> unit
       = "ml_gdk_drag_status"

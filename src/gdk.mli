@@ -319,13 +319,6 @@ module Window :
     val get_visual : window -> visual
   end
 
-module PointArray :
-  sig
-    type t = { len: int }
-    val create : len:int -> t
-    val set : t -> pos:int -> x:int -> y:int -> unit
-  end
-
 module DnD :
   sig
     val drag_status :
