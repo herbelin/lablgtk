@@ -53,41 +53,6 @@ module SpinButton = struct
   let get_value_as_int w = truncate (floor (get P.value w +. 0.5))
 end
 
-(*
-module Text = struct
-  let cast w : text obj = Object.try_cast w "GtkText"
-  external create : [>`adjustment] optobj -> [>`adjustment] optobj -> text obj
-      = "ml_gtk_text_new"
-  let create ?hadjustment ?vadjustment () =
-    create (Gpointer.optboxed hadjustment) (Gpointer.optboxed vadjustment)
-  external set_word_wrap : [>`text] obj -> bool -> unit
-      = "ml_gtk_text_set_word_wrap"
-  external set_line_wrap : [>`text] obj -> bool -> unit
-      = "ml_gtk_text_set_line_wrap"
-  external set_adjustment :
-      [>`text] obj -> ?horizontal:[>`adjustment] obj ->
-      ?vertical:[>`adjustment] obj -> unit -> unit
-      = "ml_gtk_text_set_adjustments"
-  external get_hadjustment : [>`text] obj -> adjustment obj
-      = "ml_gtk_text_get_hadj"
-  external get_vadjustment : [>`text] obj -> adjustment obj
-      = "ml_gtk_text_get_vadj"
-  external set_point : [>`text] obj -> int -> unit
-      = "ml_gtk_text_set_point"
-  external get_point : [>`text] obj -> int = "ml_gtk_text_get_point"
-  external get_length : [>`text] obj -> int = "ml_gtk_text_get_length"
-  external freeze : [>`text] obj -> unit = "ml_gtk_text_freeze"
-  external thaw : [>`text] obj -> unit = "ml_gtk_text_thaw"
-  external insert :
-      [>`text] obj -> ?font:Gdk.font -> ?foreground:Gdk.Color.t ->
-      ?background:Gdk.Color.t -> string -> unit
-      = "ml_gtk_text_insert"
-  let set ?hadjustment ?vadjustment ?word_wrap w =
-    if hadjustment <> None || vadjustment <> None then
-      set_adjustment w ?horizontal: hadjustment ?vertical: vadjustment ();
-    may word_wrap ~f:(set_word_wrap w)
-end
-*)
 
 module Combo = struct
   include Combo
