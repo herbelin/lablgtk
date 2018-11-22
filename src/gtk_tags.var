@@ -253,6 +253,10 @@ type spin_type = "GTK_SPIN_"
 type accel_flag = "GTK_ACCEL_"
   [ `VISIBLE | `LOCKED ]
 
+(* gtkbbox.h *)
+type button_box_style = "GTK_BUTTONBOX_"
+  [ `SPREAD | `EDGE | `START | `END | `CENTER | `EXPAND ]
+
 (* gtkcalendar.h *)
 type calendar_display_options = "GTK_CALENDAR_"
   [ `SHOW_HEADING | `SHOW_DAY_NAMES | `NO_MONTH_CHANGE | `SHOW_WEEK_NUMBERS
