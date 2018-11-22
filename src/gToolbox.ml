@@ -176,7 +176,7 @@ let input_text ~title ?ok ?cancel ?(text="") message =
     ~get_text: wview_chaine#buffer#get_text
     ~bind_ok:false ~expand: true ~title ?ok ?cancel message
 
-
+(*
 (**This variable contains the last directory where the user selected a file.*)
 let last_dir = ref ""
 
@@ -308,7 +308,7 @@ let autosize_clist wlist =
   wlist#columns_autosize ();
   (* remove the inserted row *)
   ignore (wlist#remove ~row: 0)
-
+*)
 
 (** Shortcuts *)
 
