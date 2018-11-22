@@ -262,9 +262,6 @@ module Widget = struct
       let proximity_out : ([>`widget], GdkEvent.Proximity.t -> bool) t =
 	{ name = "proximity_out_event"; classe = `widget;
           marshaller = marshal }
-      let client : ([>`widget], GdkEvent.Client.t -> bool) t =
-	{ name = "client_event"; classe = `widget;
-          marshaller = marshal }
       let visibility_notify : ([>`widget], GdkEvent.Visibility.t -> bool) t =
 	{ name = "visibility_notify_event"; classe = `widget;
           marshaller = marshal }
