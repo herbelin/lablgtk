@@ -199,7 +199,7 @@ Make_Extractor (GdkRectangle, GdkRectangle_val, width, Val_int)
 Make_Extractor (GdkRectangle, GdkRectangle_val, height, Val_int)
 
 /* Drawable */
-
+/* not in 3
 ML_1 (gdk_drawable_get_visual, GdkDrawable_val, Val_GdkVisual)
 ML_1 (gdk_drawable_get_colormap, GdkDrawable_val, Val_GdkColormap)
 ML_1 (gdk_drawable_get_depth, GdkDrawable_val, Val_int)
@@ -216,6 +216,7 @@ CAMLprim value ml_gdk_drawable_get_size (value drawable)
   Field(ret,1) = Val_int(y);
   return ret;
 }
+*/
 
 /* Window */
 
