@@ -10,14 +10,6 @@ classes {
   GtkAdjustment "Gtk.adjustment obj"
 }
 
-class Ruler hv set wrap : Widget {
-  "lower"                gdouble              : Read / Write
-  "upper"                gdouble              : Read / Write
-  "max-size"             gdouble              : Read / Write
-  "position"             gdouble              : Read / Write
-  method set_metric : "Tags.metric_type -> unit"
-}
-
 class Range abstract set wrap wrapsig : Widget {
   "adjustment"           GtkAdjustment        : Read / Write / Construct
   "fill-level"           gdouble              :	Read / Write
