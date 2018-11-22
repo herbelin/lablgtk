@@ -60,6 +60,7 @@ end
 
 module Toolbar = struct
   include Toolbar
+(*
   external insert_space : [>`toolbar] obj -> pos:int -> unit
       = "ml_gtk_toolbar_insert_space"
   let insert_space w ?(pos = -1) () = insert_space w ~pos
@@ -87,18 +88,17 @@ module Toolbar = struct
     "ml_gtk_toolbar_set_tooltips"
   external get_tooltips : [>`toolbar] obj -> bool
       = "ml_gtk_toolbar_get_tooltips"
-  let set ?orientation ?style ?tooltips w =
-    may orientation ~f:(set P.orientation w);
+*)
+  let set ?orientation ?style w =
     may style ~f:(set P.toolbar_style w);
-    may tooltips ~f:(set_tooltips w)
+    may orientation ~f:(Orientable.set_orientation w)
   external unset_style : [>`toolbar] obj -> unit = "ml_gtk_toolbar_unset_style"
+(*
   external get_icon_size : [>`toolbar] obj -> Tags.icon_size
       = "ml_gtk_toolbar_get_icon_size"
   external set_icon_size : [>`toolbar] obj -> Tags.icon_size -> unit 
       = "ml_gtk_toolbar_set_icon_size"
-  external unset_icon_size : [>`toolbar] obj -> unit 
-      = "ml_gtk_toolbar_unset_icon_size"
-
+*)
   (* extended API in GTK 2.4 *)
   external insert : [>`toolbar] obj -> [>`toolitem] obj -> pos:int -> unit
       = "ml_gtk_toolbar_insert"
@@ -123,8 +123,6 @@ module LinkButton = struct
   include LinkButton
   external create : string -> [>`linkbutton] obj = "ml_gtk_link_button_new"
   external create_with_label : string -> string -> [>`linkbutton] obj = "ml_gtk_link_button_new_with_label"
-  external set_uri_hook : ([>`linkbutton] obj -> string -> unit) -> unit = 
-    "ml_gtk_link_button_set_uri_hook"
 end
 
 module ToolItem = ToolItem
