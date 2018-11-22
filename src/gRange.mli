@@ -123,10 +123,12 @@ class scale : Gtk.scale obj ->
     val obj : Gtk.scale obj
     method set_digits : int -> unit
     method set_draw_value : bool -> unit
-    method set_value_pos : Tags.position -> unit
+    method set_has_origin : bool -> unit
+    method set_value_pos : Tags.position_type -> unit
     method digits : int
     method draw_value : bool
-    method value_pos : Tags.position
+    method has_origin : bool
+    method value_pos : Tags.position_type
   end
 
 (** @gtkdoc gtk GtkScale
@@ -142,9 +144,15 @@ val scale :
   ?adjustment:GData.adjustment ->
   ?digits:int ->
   ?draw_value:bool ->
-  ?value_pos:Tags.position ->
+  ?has_origin:bool ->
+  ?value_pos:Tags.position_type ->
+  ?fill_level:float ->
   ?inverted:bool ->
-  ?update_policy:Tags.update_type ->
+  ?restrict_to_fill_level:bool ->
+  ?round_digits:int ->
+  ?show_fill_level:bool ->
+  ?lower_stepper_sensitivity:Tags.sensitivity_type ->
+  ?upper_stepper_sensitivity:Tags.sensitivity_type ->
   ?packing:(widget -> unit) -> ?show:bool -> unit -> scale
 
 (** @gtkdoc gtk GtkScrollbar
