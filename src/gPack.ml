@@ -179,6 +179,8 @@ class paned obj = object
     check1 obj; Paned.pack1 obj (as_widget w) ~resize ~shrink
   method pack2 ?(resize=false) ?(shrink=false) w =
     check2 obj; Paned.pack2 obj (as_widget w) ~resize ~shrink
+  method child1 = new widget (Paned.get_child1 obj)
+  method child2 = new widget (Paned.get_child2 obj)
 end
 
 let paned dir =
