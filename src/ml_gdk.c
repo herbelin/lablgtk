@@ -589,7 +589,7 @@ static value val_int(gpointer i)
 {
   return Val_int (GPOINTER_TO_INT(i));
 }
-CAMLprim value ml_GdkDragContext_targets (value c)
+CAMLprim value ml_gdk_drag_context_list_targets (value c)
 {
   return Val_GList (gdk_drag_context_list_targets(GdkDragContext_val(c)),
                     val_int);
