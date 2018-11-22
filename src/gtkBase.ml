@@ -84,8 +84,8 @@ module Widget = struct
       = "ml_gtk_widget_get_toplevel"
   external get_ancestor : [>`widget] obj -> g_type -> widget obj
       = "ml_gtk_widget_get_ancestor"
-  external get_colormap : [>`widget] obj -> Gdk.colormap
-      = "ml_gtk_widget_get_colormap"
+  (*external get_colormap : [>`widget] obj -> Gdk.colormap
+      = "ml_gtk_widget_get_colormap"*)
   external get_visual : [>`widget] obj -> Gdk.visual
       = "ml_gtk_widget_get_visual"
   external get_pointer : [>`widget] obj -> int * int
@@ -143,7 +143,7 @@ module Widget = struct
       = "ml_gtk_widget_set_colormap" *)
   external set_visual : [>`widget] obj -> Gdk.visual -> unit
       = "ml_gtk_widget_set_visual"
-  external set_default_colormap : Gdk.colormap -> unit
+  (* external set_default_colormap : Gdk.colormap -> unit
       = "ml_gtk_widget_set_default_colormap"
   external set_default_visual : Gdk.visual -> unit
       = "ml_gtk_widget_set_default_visual"
@@ -158,7 +158,7 @@ module Widget = struct
   external pop_colormap : unit -> unit
       = "ml_gtk_widget_pop_colormap"
   external pop_visual : unit -> unit
-      = "ml_gtk_widget_pop_visual"
+      = "ml_gtk_widget_pop_visual" *)
   
   (** @since GTK 2.12 *)
   module Tooltip = struct
