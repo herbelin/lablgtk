@@ -258,6 +258,10 @@ type calendar_display_options = "GTK_CALENDAR_"
   [ `SHOW_HEADING | `SHOW_DAY_NAMES | `NO_MONTH_CHANGE | `SHOW_WEEK_NUMBERS
   | `SHOW_DETAILS ]
 
+(* gtkcontainer.h *)
+type resize_mode = "GTK_RESIZE_"
+  [ `PARENT | `QUEUE | `IMMEDIATE ]
+
 (* gtkdragdest.h *)
 type dest_defaults = "GTK_DEST_DEFAULT_"
   [ `MOTION | `HIGHLIGHT | `DROP | `ALL ]
