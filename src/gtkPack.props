@@ -50,8 +50,8 @@ class Paned hv wrap : Container {
   method add2 : "[>`widget] obj -> unit"
   method pack1 : "[>`widget] obj -> resize:bool -> shrink:bool -> unit"
   method pack2 : "[>`widget] obj -> resize:bool -> shrink:bool -> unit"
-  method child1 : "widget obj"
-  method child2 : "widget obj"
+  method get_child1 : "widget obj"
+  method get_child2 : "widget obj"
   (* omit signals *)
 }
 
