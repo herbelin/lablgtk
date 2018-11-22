@@ -31,6 +31,10 @@ class TextView wrap wrapsig : Container {
 
   (* API extended in GTK 2.4 *)
   "accepts-tab"             gboolean             : Read / Write / Set
+  "accepts-tab"          gboolean             : Read / Write / Set
+  "buffer"               GtkTextBuffer        : Read / Write
+  "im-module"            gchararray           : Read / Write
+  "overwrite"            gboolean             : Read / Write
 
   signal copy_clipboard
   signal cut_clipboard

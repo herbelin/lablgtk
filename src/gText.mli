@@ -498,9 +498,11 @@ object ('a)
   method notify_accepts_tab : callback:(bool -> unit) -> GtkSignal.id
   method notify_cursor_visible : callback:(bool -> unit) -> GtkSignal.id
   method notify_editable : callback:(bool -> unit) -> GtkSignal.id
+  method notify_im_module : callback:(string -> unit) -> GtkSignal.id
   method notify_indent : callback:(int -> unit) -> GtkSignal.id
   method notify_justification : callback:(GtkEnums.justification -> unit) -> GtkSignal.id
   method notify_left_margin : callback:(int -> unit) -> GtkSignal.id
+  method notify_overwrite : callback:(bool -> unit) -> GtkSignal.id
   method notify_pixels_above_lines : callback:(int -> unit) -> GtkSignal.id
   method notify_pixels_below_lines : callback:(int -> unit) -> GtkSignal.id
   method notify_pixels_inside_wrap : callback:(int -> unit) -> GtkSignal.id
@@ -538,6 +540,7 @@ object
   method get_line_yrange : iter -> int * int
   method get_window : Tags.text_window_type -> Gdk.window option
   method get_window_type : Gdk.window -> Tags.text_window_type
+  method im_module : string
   method indent : int
   method justification : Tags.justification
   method left_margin : int
@@ -545,6 +548,7 @@ object
   method move_child : child:GObj.widget -> x:int -> y:int -> unit
   method move_mark_onscreen : mark -> bool
   method move_visually : iter -> int -> bool
+  method overwrite : bool
   method pixels_above_lines : int
   method pixels_below_lines : int
   method pixels_inside_wrap : int
@@ -566,9 +570,11 @@ object
   method set_buffer : buffer -> unit
   method set_cursor_visible : bool -> unit
   method set_editable : bool -> unit
+  method set_im_module : string -> unit
   method set_indent : int -> unit
   method set_justification : Tags.justification -> unit
   method set_left_margin : int -> unit
+  method set_overwrite : bool -> unit
   method set_pixels_above_lines : int -> unit
   method set_pixels_below_lines : int -> unit
   method set_pixels_inside_wrap : int -> unit
