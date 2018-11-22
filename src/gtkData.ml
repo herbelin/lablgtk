@@ -150,15 +150,3 @@ module Adjustment = struct
       = "ml_gtk_adjustment_clamp_page"
 end
 
-module Tooltips = struct
-  external create : unit -> tooltips obj = "ml_gtk_tooltips_new"
-  external enable : [>`tooltips] obj -> unit = "ml_gtk_tooltips_enable"
-  external disable : [>`tooltips] obj -> unit = "ml_gtk_tooltips_disable"
-  external set_delay : [>`tooltips] obj -> int -> unit
-      = "ml_gtk_tooltips_set_delay"
-  external set_tip :
-      [>`tooltips] obj ->
-      [>`widget] obj -> ?text:string -> ?privat:string -> unit
-      = "ml_gtk_tooltips_set_tip"
-end
-
