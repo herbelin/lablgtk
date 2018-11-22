@@ -104,14 +104,16 @@ class Arrow set wrap : Misc {
 class Image set wrap : Misc {
   "file"                 gchararray           : Write
   "image"                GdkImage             : Read / Write
+  "gicon"                GIcon                : Read / Write
+  "icon-name"            gchararray           : Read / Write
+  "icon-set"             GtkIconSet           : Read / Write
+  "icon-size"            GtkIconSize          : Read / Write
   "pixbuf"               GdkPixbuf            : Read / Write
   "pixbuf-animation"     GdkPixbufAnimation   : Read / Write
   "pixel-size"           gint                 : Read / Write
   "pixmap"               GdkPixmap            : Read / Write / NoWrap
   "mask"                 GdkBitmap_opt        : Read / Write
   "stock"                GtkStock             : Read / Write
-  "icon-set"             GtkIconSet           : Read / Write
-  "icon-size"            GtkIconSize          : Read / Write
   "storage-type"         GtkImageType         : Read
   method clear
 }

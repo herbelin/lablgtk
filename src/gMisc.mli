@@ -285,6 +285,7 @@ class image : 'a obj ->
     method set_file : string -> unit
     method set_pixbuf : GdkPixbuf.pixbuf -> unit
     method set_stock : GtkStock.id -> unit
+    method set_icon_name : string -> unit
     method set_icon_set : icon_set -> unit
     method set_icon_size : Tags.icon_size -> unit
     method set_pixel_size : int -> unit
@@ -294,6 +295,7 @@ class image : 'a obj ->
     method pixbuf : GdkPixbuf.pixbuf
     method pixel_size : int
     method stock : GtkStock.id
+    method icon_name : string
     method icon_set : icon_set
     method icon_size : Tags.icon_size
   end
@@ -302,13 +304,14 @@ class image : 'a obj ->
 val image :
   ?file:string ->
   ?image:Gdk.image ->
+  ?icon_name:string ->
+  ?icon_set:icon_set ->
+  ?icon_size:Tags.icon_size ->
   ?pixbuf:GdkPixbuf.pixbuf ->
   ?pixel_size:int ->
   ?pixmap:Gdk.pixmap ->
   ?mask:Gdk.bitmap ->
   ?stock:GtkStock.id ->
-  ?icon_set:icon_set ->
-  ?icon_size:Tags.icon_size ->
   ?xalign:float ->
   ?yalign:float ->
   ?xpad:int ->
