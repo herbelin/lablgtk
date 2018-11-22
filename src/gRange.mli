@@ -68,12 +68,23 @@ class range_signals : [> Gtk.range] obj ->
   object
     inherit GObj.widget_signals
     method adjust_bounds : callback:(float -> unit) -> GtkSignal.id
-    method move_slider : callback:(Tags.scroll_type -> unit) -> GtkSignal.id
-    method change_value : callback:(Tags.scroll_type -> float -> unit) -> GtkSignal.id
+    method move_slider :
+        callback:(Tags.scroll_type -> unit) -> GtkSignal.id
+    method change_value :
+        callback:(Tags.scroll_type -> float -> unit) -> GtkSignal.id
     method value_changed : callback:(unit -> unit) -> GtkSignal.id
-    method notify_adjustment : callback:(GData.adjustment -> unit) -> GtkSignal.id
+    method notify_adjustment :
+        callback:(GData.adjustment -> unit) -> GtkSignal.id
+    method notify_fill_level : callback:(float -> unit) -> GtkSignal.id
     method notify_inverted : callback:(bool -> unit) -> GtkSignal.id
-    method notify_update_policy : callback:(GtkEnums.update_type -> unit) -> GtkSignal.id
+    method notify_lower_stepper_sensitivity :
+        callback:(Tags.sensitivity_type -> unit) -> GtkSignal.id
+    method notify_restrict_to_fill_level :
+        callback:(bool -> unit) -> GtkSignal.id
+    method notify_round_digits : callback:(int -> unit) -> GtkSignal.id
+    method notify_show_fill_level : callback:(bool -> unit) -> GtkSignal.id
+    method notify_upper_stepper_sensitivity :
+        callback:(Tags.sensitivity_type -> unit) -> GtkSignal.id
   end
 
 (** Base class for widgets which visualize an adjustment
@@ -85,12 +96,22 @@ class range : ([> Gtk.range] as 'a) obj ->
     method as_range : Gtk.range Gtk.obj
     method connect : range_signals
     method event : GObj.event_ops
-    method set_adjustment : GData.adjustment -> unit
-    method set_inverted : bool -> unit
-    method set_update_policy : Tags.update_type -> unit
     method adjustment : GData.adjustment
+    method fill_level : float
     method inverted : bool
-    method update_policy : Tags.update_type
+    method lower_stepper_sensitivity : Tags.sensitivity_type
+    method restrict_to_fill_level : bool
+    method round_digits : int
+    method set_adjustment : GData.adjustment -> unit
+    method set_fill_level : float -> unit
+    method set_inverted : bool -> unit
+    method set_lower_stepper_sensitivity : Tags.sensitivity_type -> unit
+    method set_restrict_to_fill_level : bool -> unit
+    method set_round_digits : int -> unit
+    method set_show_fill_level : bool -> unit
+    method set_upper_stepper_sensitivity : Tags.sensitivity_type -> unit
+    method show_fill_level : bool
+    method upper_stepper_sensitivity : Tags.sensitivity_type
   end
 
 (** A slider widget for selecting a value from a range
@@ -135,8 +156,13 @@ val scale :
 val scrollbar :
   Tags.orientation ->
   ?adjustment:GData.adjustment ->
+  ?fill_level:float ->
   ?inverted:bool ->
-  ?update_policy:Tags.update_type ->
+  ?restrict_to_fill_level:bool ->
+  ?round_digits:int ->
+  ?show_fill_level:bool ->
+  ?lower_stepper_sensitivity:Tags.sensitivity_type ->
+  ?upper_stepper_sensitivity:Tags.sensitivity_type ->
   ?packing:(widget -> unit) -> ?show:bool -> unit -> range
 
 (** {3 GtkRuler} *)
