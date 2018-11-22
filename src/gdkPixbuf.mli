@@ -75,13 +75,17 @@ val from_data :
   width:int -> height:int ->
   ?bits:int -> ?rowstride:int -> ?has_alpha:bool -> Gpointer.region -> pixbuf
 
+(* GtkPixbuf removed in gtk3
+
 (** @gtkdoc gdk gdk-Pixbufs *)
+
 val get_from_drawable :
   dest:pixbuf ->
   ?dest_x:int -> ?dest_y:int ->
   ?width:int ->  ?height:int ->
   ?src_x:int -> ?src_y:int ->
   ?colormap:Gdk.colormap -> [>`drawable] Gobject.obj -> unit
+*)
 
 (** {3 Accessors} *)
 
@@ -93,6 +97,8 @@ external get_width : pixbuf -> int = "ml_gdk_pixbuf_get_width"
 external get_height : pixbuf -> int = "ml_gdk_pixbuf_get_height"
 external get_rowstride : pixbuf -> int = "ml_gdk_pixbuf_get_rowstride"
 val get_pixels : pixbuf -> Gpointer.region
+
+(* GtkPixbuf removed in gtk3
 
 (** {3 Rendering} *)
 
@@ -146,6 +152,7 @@ val render_to_drawable_alpha :
 
 (** @gtkdoc gdk gdk-Pixbufs *)
 val create_pixmap : ?threshold:int -> pixbuf -> Gdk.pixmap * Gdk.bitmap option
+*)
 
 (** {3 Transform} *)
 
