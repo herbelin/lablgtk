@@ -222,13 +222,16 @@ CAMLprim value ml_gdk_drawable_get_size (value drawable)
 
 //ML_3 (gdk_window_set_back_pixmap, GdkWindow_val, GdkPixmap_val, Int_val, Unit)
 ML_2 (gdk_window_set_cursor, GdkWindow_val, GdkCursor_val, Unit)
+ML_1 (gdk_window_get_parent, GdkWindow_val, Val_GdkWindow)
+ML_2 (gdk_window_set_transient_for, GdkWindow_val, GdkWindow_val, Unit)
+ML_1 (gdk_window_get_visual, GdkWindow_val, Val_GdkVisual)
+/* not in 3
 ML_1 (gdk_window_clear, GdkWindow_val, Unit)
 ML_5 (gdk_window_clear_area, GdkWindow_val, Int_val, Int_val, Int_val, Int_val,
       Unit)
 ML_0 (GDK_ROOT_PARENT, Val_GdkWindow)
-ML_1 (gdk_window_get_parent, GdkWindow_val, Val_GdkWindow)
-ML_2 (gdk_window_set_transient_for, GdkWindow_val, GdkWindow_val, Unit)
 ML_1 (gdk_window_foreign_new, GdkNativeWindow_val, Val_GdkWindow)
+*/
 
 #if defined(_WIN32) || defined(__CYGWIN__) || defined(HAS_GTKQUARTZ)
 CAMLprim value ml_GDK_WINDOW_XID(value v)
