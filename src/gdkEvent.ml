@@ -63,7 +63,7 @@ module Expose = struct
   type t = [ `EXPOSE ] event
   let cast ev : t = cast ev ~kind:[`EXPOSE]
   external area : t -> Rectangle.t = "ml_GdkEventExpose_area"
-  external region : t -> region = "ml_GdkEventExpose_region"
+  (*external region : t -> region = "ml_GdkEventExpose_region"*)
   external count : t -> int = "ml_GdkEventExpose_count"
 end
 
