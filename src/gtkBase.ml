@@ -136,7 +136,7 @@ module Widget = struct
       = "ml_gtk_widget_accelerators_locked"
 *)
   external window : [>`widget] obj -> Gdk.window
-      = "ml_GtkWidget_window"
+      = "ml_gtk_widget_get_window"
   external allocation : [>`widget] obj -> rectangle
       = "ml_gtk_widget_get_allocation"
   (* external set_colormap : [>`widget] obj -> Gdk.colormap -> unit
