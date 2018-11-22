@@ -345,6 +345,7 @@ and widget obj = object (self)
   method misc = new misc_ops (obj :> Gtk.widget obj)
   method drag = new drag_ops (unsafe_cast obj : Gtk.widget obj)
   method coerce = (self :> widget)
+  method destroy () = Widget.destroy obj
 end
 
 class widget_signals_impl obj = object (self)

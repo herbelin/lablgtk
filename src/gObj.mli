@@ -278,6 +278,7 @@ and widget : ([> Gtk.widget] as 'a) obj ->
     method coerce : widget
     method drag : drag_ops
     method misc : misc_ops
+    method destroy : unit -> unit
   end
 
 (** @gtkdoc gtk GtkWidget *)

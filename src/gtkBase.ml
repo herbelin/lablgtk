@@ -184,6 +184,8 @@ module Widget = struct
 
   module Signals = struct
     open GtkSignal
+    let destroy =
+      { name = "destroy"; classe = `widget; marshaller = marshal_unit }
     let marshal f _ = function
       | `OBJECT(Some p) :: _ -> f (cast p)
       |	_ -> invalid_arg "GtkBase.Widget.Signals.marshal"
