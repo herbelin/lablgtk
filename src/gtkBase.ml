@@ -74,10 +74,10 @@ module Widget = struct
   external intersect :
       [>`widget] obj -> Gdk.Rectangle.t -> Gdk.Rectangle.t option
       = "ml_gtk_widget_intersect"
-  external set_state : [>`widget] obj -> state_type -> unit
+  (*external set_state : [>`widget] obj -> state_type -> unit
       = "ml_gtk_widget_set_state"
   external set_uposition : [>`widget] obj -> x:int -> y:int -> unit
-      = "ml_gtk_widget_set_uposition"
+      = "ml_gtk_widget_set_uposition"*)
   external add_events : [>`widget] obj -> Gdk.Tags.event_mask list -> unit
       = "ml_gtk_widget_add_events"
   external get_toplevel : [>`widget] obj -> widget obj
