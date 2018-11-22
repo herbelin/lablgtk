@@ -224,7 +224,6 @@ class ['a] message_dialog obj ~(buttons : 'a buttons) = object (self)
   inherit ['a] dialog_skel obj
   inherit message_dialog_props
   method connect : 'a dialog_signals = new dialog_signals obj self#decode
-  method set_markup = MessageDialog.set_markup obj
   initializer
     tbl <- snd buttons @ tbl
 end
