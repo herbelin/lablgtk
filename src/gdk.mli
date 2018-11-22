@@ -282,6 +282,8 @@ module Color :
     val blue : color -> int
     val green : color -> int
     val pixel : color -> int
+    val color_parse : string -> color
+    val color_to_string : color -> string
   end
 
 module Rectangle :
