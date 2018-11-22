@@ -239,13 +239,20 @@ ML_1 (gdk_window_foreign_new, GdkNativeWindow_val, Val_GdkWindow)
 */
 
 #if defined(_WIN32) || defined(__CYGWIN__) || defined(HAS_GTKQUARTZ)
-CAMLprim value ml_GDK_WINDOW_XID(value v)
+CAMLprim value ml_GDK_WINDOW_XID()
+{
+ ml_raise_gdk ("ml_GDK_WINDOW_XID: only for X11");
+ return Val_unit;
+}
+CAMLprim value ml_gdk_x11_window_foreign_new_for_display()
 {
  ml_raise_gdk ("ml_GDK_WINDOW_XID: only for X11");
  return Val_unit;
 }
 #else
 ML_1 (GDK_WINDOW_XID, GdkWindow_val, Val_XID)
+ML_2 (gdk_x11_window_foreign_new_for_display, GdkDisplay_val, XID_val,
+      Val_GdkWindow)
 #endif
 CAMLprim value ml_gdk_window_get_position (value window)
 {
