@@ -376,10 +376,9 @@ ML_1 (gtk_widget_push_visual, GdkVisual_val, Unit)
 ML_1 (gtk_widget_push_colormap, GdkColormap_val, Unit)
 ML_0 (gtk_widget_pop_visual, Unit)
 ML_0 (gtk_widget_pop_colormap, Unit) */
-/* deprecated
-ML_4 (gtk_widget_render_icon, GtkWidget_val, String_val, Icon_size_val,
-      String_option_val, Val_GdkPixbuf)
-
+/* depredated >= 3.10 */
+ML_3 (gtk_widget_render_icon_pixbuf, GtkWidget_val, String_val, Icon_size_val,
+      Val_GdkPixbuf)
 CAMLprim value ml_gtk_widget_style_get_property (value w, value n)
 {
     CAMLparam2 (w, n);
@@ -399,7 +398,6 @@ CAMLprim value ml_gtk_widget_style_get_property (value w, value n)
     }
     CAMLreturn (ret);
 }
-*/
 
 #ifdef HASGTK212
 ML_1 (gtk_widget_get_tooltip_markup, GtkWidget_val, Val_string)
