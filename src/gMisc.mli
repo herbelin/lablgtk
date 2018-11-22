@@ -247,24 +247,29 @@ class image : 'a obj ->
     method set_icon_set : icon_set -> unit
     method set_icon_size : Tags.icon_size -> unit
     method set_pixel_size : int -> unit
+    method set_resource : string -> unit
+    method set_use_fallback : bool -> unit
     method pixbuf : GdkPixbuf.pixbuf
     method pixel_size : int
     method stock : GtkStock.id
     method icon_name : string
     method icon_set : icon_set
     method icon_size : Tags.icon_size
+    method resource : string
+    method use_fallback : bool
   end
 
 (** @gtkdoc gtk GtkImage *)
 val image :
   ?file:string ->
-  ?image:Gdk.image ->
   ?icon_name:string ->
   ?icon_set:icon_set ->
   ?icon_size:Tags.icon_size ->
   ?pixbuf:GdkPixbuf.pixbuf ->
   ?pixel_size:int ->
+  ?resource:string ->
   ?stock:GtkStock.id ->
+  ?use_fallback:bool ->
   ?xalign:float ->
   ?yalign:float ->
   ?xpad:int ->
