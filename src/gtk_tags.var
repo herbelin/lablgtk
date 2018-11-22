@@ -266,6 +266,13 @@ type dest_defaults = "GTK_DEST_DEFAULT_"
 type target_flags = "GTK_TARGET_"
   [ `SAME_APP | `SAME_WIDGET | `OTHER_APP | `OTHER_WIDGET ]
 
+(* gtkscrolledwindow.h *)
+type corner_type = "GTK_CORNER_"
+  [ `TOP_LEFT | `BOTTOM_LEFT | `TOP_RIGHT | `BOTTOM_RIGHT ]
+
+type policy_type = "GTK_POLICY_"
+  [ `ALWAYS | `AUTOMATIC | `NEVER | `EXTERNAL ]
+
 (* gtktreemodel.h *)
 type tree_model_flags = "GTK_TREE_MODEL_"
   [ `ITERS_PERSIST | `LIST_ONLY ]
