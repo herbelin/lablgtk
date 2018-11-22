@@ -454,7 +454,7 @@ module DnD = struct
   external drag_context_suggested_action : drag_context -> drag_action
       = "ml_gdk_drag_context_get_suggested_action"
   external drag_context_targets : drag_context -> atom list
-      = "ml_gdk_drag_context_get_targets"
+      = "ml_gdk_drag_context_list_targets"
 end
 
 module Truecolor = struct
