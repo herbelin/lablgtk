@@ -228,14 +228,11 @@ class ['a] message_dialog obj ~(buttons : 'a buttons) = object (self)
     tbl <- snd buttons @ tbl
 end
 
-let message_dialog ?(message="") ?(use_markup=false) ~message_type ~buttons =
-  make_dialog [] ~create:(fun pl ->
-    let w = 
-      let message = if use_markup then "" else message in
-      MessageDialog.create ~message_type ~buttons:(fst buttons) ~message () in 
-    Gobject.set_params w pl;
-    if use_markup then MessageDialog.set_markup w message ;
-    new message_dialog ~buttons w)
+let message_dialog ~buttons ?message_type ?message =
+  MessageDialog.make_params [] ?message_type ?text:message ~cont:(fun pl ->
+    make_dialog pl ~create:(fun pl ->
+      let w = MessageDialog.create ~buttons:(fst buttons) pl in
+      new message_dialog ~buttons w))
 
 
 (** AboutDialog *)
