@@ -135,7 +135,7 @@ module Visual = struct
   external get_best : ?depth:int -> ?kind:visual_type -> unit -> visual
       = "ml_gdk_visual_get_best"
   external get_screen : visual -> screen = "ml_gdk_visual_get_screen"
-  external get_type : visual -> visual_type = "ml_gdk_visual_get_type"
+  external get_type : visual -> visual_type = "ml_gdk_visual_get_visual_type"
   external depth : visual -> int = "ml_gdk_visual_get_depth"
 end
 
@@ -200,20 +200,21 @@ end
 
 module Window = struct
   let cast w : window = Gobject.try_cast w "GdkWindow"
-  external create_foreign : native_window -> window = "ml_gdk_window_foreign_new"
+  external create_foreign : display -> xid -> window =
+    "ml_gdk_x11_window_foreign_new_for_display"
   external get_parent : window -> window = "ml_gdk_window_get_parent"
   external get_position : window -> int * int = "ml_gdk_window_get_position"
   external get_pointer_location : window -> int * int =
     "ml_gdk_window_get_pointer_location"
-  external root_parent : unit -> window = "ml_GDK_ROOT_PARENT"
+  (* external root_parent : unit -> window = "ml_GDK_ROOT_PARENT" *)
   (* external set_back_pixmap : window -> pixmap -> int -> unit = 
     "ml_gdk_window_set_back_pixmap" *)
   external set_cursor : window -> cursor -> unit = 
     "ml_gdk_window_set_cursor"
-  external clear : window -> unit = "ml_gdk_window_clear"
+  (* external clear : window -> unit = "ml_gdk_window_clear"
   external clear_area :
     window -> x:int -> y:int -> width:int -> height:int -> unit
-    = "ml_gdk_window_clear"
+    = "ml_gdk_window_clear" *)
   external get_xid : window -> xid = "ml_GDK_WINDOW_XID"
   let get_xwindow = get_xid
   external get_visual : window -> visual = "ml_gdk_window_get_visual"

@@ -303,14 +303,14 @@ module Rectangle :
 module Window :
   sig
     val cast : 'a obj -> window
-    val create_foreign : native_window -> window
+    val create_foreign : display -> xid -> window
     val get_parent : window -> window
     val get_position : window -> int * int
     val get_pointer_location : window -> int * int
-    val root_parent : unit -> window
+    (* val root_parent : unit -> window
     val clear : window -> unit
     val clear_area :
-        window -> x:int -> y:int -> width:int -> height:int -> unit
+        window -> x:int -> y:int -> width:int -> height:int -> unit *)
     val get_xwindow : window -> xid
     val native_of_xid : xid -> native_window
     val xid_of_native : native_window -> xid
