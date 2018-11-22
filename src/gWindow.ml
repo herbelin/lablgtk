@@ -299,7 +299,6 @@ end
 class socket obj = object (self)
   inherit container (obj : Gtk.socket obj)
   method connect = new socket_signals obj
-  method steal = Socket.steal obj
   method xwindow =
     self#misc#realize ();
     Gdk.Window.get_xwindow self#misc#window

@@ -488,7 +488,6 @@ class socket : Gtk.socket obj ->
     inherit GContainer.container
     val obj : Gtk.socket obj
     method connect : socket_signals
-    method steal : Gdk.native_window -> unit
     (** @deprecated "inherently unreliable" *)
     method xwindow : Gdk.xid
   end
